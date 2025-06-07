@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}The Studio{% endblock %}
+
+{% block content %}
+<div id="studioPageWrapper">
+
+  <section class="page-title-section text-white d-flex flex-column justify-content-center align-items-center text-center" 
+           style="background-image: url('static/studioSplashImg.png');">
+    <h1 class="display-4 fw-bold">THE STUDIO</h1>
+    <p class="mt-3 px-4" style="max-width: 700px;">
+      Aenean gravida consequat nunc, at auctor purus consectetur sit amet. Non tempor nisl. 
+      Nulla ipsum arcu, vehicula a congue quis ullamcorper dictum tortor. Aenean gravida consequat nunc, 
+      at auctor purus consectetur sit amet. Non tempor nisl. Nulla ipsum arcu, vehicula a congue quis ullamcorper dictum tortor.
+    </p>
+  </section>
+
+  <!-- Virtual tour -->
+  <section class="virtual-tour d-flex flex-column justify-content-center align-items-center text-center">
+    <h2 class="mb-4">A LOOK INSIDE</h2>
+    <div class="iframe-box">
+        <iframe
+        src="https://my.matterport.com/show/?m=qCpMRBp9d4g"
+        frameborder="0"
+        allowfullscreen
+        allow="autoplay; fullscreen; web-share; xr-spatial-tracking;">
+        </iframe>
+    </div>
+   </section>
+
+
+  <!-- Notes and Floorplan -->
+  <section class="notes-section text-center py-5">
+    <h2 class="mb-4">NOTES</h2>
+    <div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-5">
+      <img src="/static/floorplan.png" alt="Studio Floorplan" style="max-width: 300px; width: 100%;">
+      <ul class="text-start">
+        <li>1700 SQFT</li>
+        <li>Ground floor</li>
+        <li>Street access</li>
+        <li>13 ft ceilings</li>
+        <li>Daylight or blackout</li>
+        <li>Courtyard access</li>
+        <li>Street parking</li>
+        <li>High speed WiFi</li>
+      </ul>
+    </div>
+
+    <div class="mt-5">
+      <a href="{{ url_for('book') }}" class="btn btn-dark px-5 py-2">BOOK NOW</a>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block title %}Antonio Jefferson Studio{% endblock %}
+
+{% block content %}
+
+<div id="container">
+
+  <!-- HERO SECTION -->
+  <section class="panel hero-section white text-white text-center d-flex align-items-center justify-content-center">
+    <div id="heroContent">
+      <div id="logo">
+        <h1 class="display-4 fw-bold heroLogo">ANTONIO JEFFERSON</h1>
+        <h2 class="h3 heroLogo">STUDIO</h2>
+      </div>
+      <div class="scroll-indicator mt-4 scrollDisc">
+        <p class="mb-1">SCROLL TO DISCOVER</p>
+        <i class="bi bi-arrow-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO SECTION -->
+  <section id="introSec" class="panel intro-section">
+    <div class="container">
+      <div id="introHeading">
+        <h2 class="fw-bold text-uppercase mb-4">LOREM IPSUM DOLOR SIT AMET, ADIPISCING ELIT.</h2>
+      </div>
+      <p class="mx-auto mb-4" style="max-width: 600px;">
+        Lorem ipsum dolor sit amet. Mauris facilisis turpis tortor, at egestas metus dapibus eu...
+      </p>
+      <a href="{{ url_for('studio') }}" class="btn btn-dark">INSIDER LOOK</a>
+    </div>
+  </section>
+
+  <a id="contactBtn">CONTACT US</a>
+  
+  <!-- STACKED PANELS -->
+  <section class="panel orange parallax-panel clip-panel" style="background-image: url('/static/servicesSplashImg.png');">
+    <div class="scroll-box">
+      <h2>SERVICES</h2>
+      <p>We offer professional photography, videography, and content creation services tailored to artists, brands, and creatives.</p>
+    </div>
+  </section>
+
+  <section class="panel purple parallax-panel clip-panel" style="background-image: url('/static/shopSplashImg.png');">
+    <div class="scroll-box">
+      <h2>SHOP</h2>
+      <p>Explore our curated collection of studio apparel, gear, and limited-edition drops. Designed by creators, for creators. Your next favorite piece is waiting.</p>
+    </div>
+  </section>
+
+  <section class="panel dark parallax-panel clip-panel" style="background-image: url('/static/bookSplashImg.png');">
+    <div class="scroll-box">
+      <h2>BOOK NOW</h2>
+      <p>Reserve time in our cutting-edge space for your next shoot, session, or event. Flexible layouts. World-class equipment. Boundless creative freedom.</p>
+    </div>
+  </section>
+
+
+    {% block footer %}
+    <footer id="homefooter">
+        <div id="logo">
+            <h1>ANTONIO JEFFERSON</h1>
+            <h2>STUDIO</h2>
+        </div>
+        <div id="info">
+            <ul>
+                <li>New York City</li>
+                <li>53 Bridge St. #707<br>Brooklyn, NY</li>
+                <li>PHONE: 000-000-0000</li>
+                <li>INFO@AJSTUDIOS.COM</li>
+                <li>
+                    <i class="bi bi-instagram"></i>
+                    <i class="bi bi-linkedin"></i>
+                </li>
+            </ul>
+        </div>
+    <footer>
+    {% endblock %}
+
+
+</div>
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// set z-index stack
+gsap.set('.panel', {
+  zIndex: (i, el, list) => list.length - i
+});
+
+const panels = gsap.utils.toArray(".panel:not(:last-child)");
+
+gsap.to(panels, {
+  scrollTrigger: {
+    trigger: "#container",
+    start: "top top",
+    end: () => {
+      const panelsHeight = panels.length * window.innerHeight;
+      const revealCutoff = window.innerHeight - 350;
+      return panelsHeight - revealCutoff;
+    },
+    scrub: true,
+    pin: true,
+    anticipatePin: 1
+  },
+  yPercent: (i, el) => {
+    if (i === panels.length - 1) {
+      return -60; // lock last panel at -60%
+    }
+    return i === 0 ? -100 : -125;
+  },
+  ease: "none",
+  stagger: 0.3
+});
+
+
+gsap.to("#heroContent", {
+  scrollTrigger: {
+    trigger: ".hero-section",
+    start: "top top",
+    end: "bottom top",
+    scrub: true
+  },
+  opacity: 0,
+  y: 200, // more dramatic drop
+  ease: "power2.out"
+});
+
+
+
+function updateScrollBoxPositions() {
+  const boxes = document.querySelectorAll('.scroll-box');
+
+  boxes.forEach(box => {
+    const section = box.closest('.panel');
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const boxHeight = box.offsetHeight;
+
+    // Check if section is visible in viewport
+    if (rect.top < vh && rect.bottom > 0) {
+      // Center the box in viewport relative to the section scroll position
+      const marginTop = Math.max(0, (vh - boxHeight) / 2 - rect.top);
+      box.style.marginTop = `${marginTop}px`;
+    } else {
+      // If not visible, avoid layout jump
+      box.style.marginTop = `0px`;
+    }
+  });
+}
+
+// Listen to scroll and resize events
+window.addEventListener('scroll', updateScrollBoxPositions);
+window.addEventListener('resize', updateScrollBoxPositions);
+window.addEventListener('load', updateScrollBoxPositions);
+
+
+
+</script>
+
+
+{% endblock %}
