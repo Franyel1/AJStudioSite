@@ -1,0 +1,297 @@
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0 !important;
+  padding-top: 1em;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* expands to fill space between navbar and footer */
+}
+
+#logo{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+
+.hero-section {
+  background-image: url('heroSplashImg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 10;
+}
+
+a:link{
+  text-decoration: none;
+}
+
+#contactBtn{
+  position: absolute;
+  bottom: 1vh;
+  right: 1vw;
+  font-size: 12pt;
+  background-color: white;
+  color: black;
+  padding: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  font-weight: bold;
+  z-index: 99999;
+}
+
+.btn {
+  border-radius: 0 !important;
+}
+
+#heroContent{
+  padding-top: 200px !important;
+}
+
+.custom-navbar {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  padding-left: 2vw;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: black !important;
+}
+
+.custom-navbar .navbar-brand{
+  font-size: 0.9rem;
+}
+
+.custom-navbar .navbar-brand span {
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-top: -5px;
+}
+
+.navbar-nav .nav-link {
+  font-size: 0.5rem;
+  color: white;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+  color: #929292;
+}
+
+.navbar-nav .nav-link {
+  position: relative;
+  overflow: hidden;
+  padding: 0.5rem 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 11;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  transition: height 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::before,
+.navbar-nav .nav-link.active::before {
+  height: 100%;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #fff;
+}
+
+
+
+
+
+
+
+/*/////////////////////////////////////////////*/
+
+
+.content-box {
+  max-width: 500px;
+  border: 1px solid #ccc;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.intro-section {
+  position: relative;
+  background-color: white;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;  
+  height: 100vh !important;
+  padding-top: 50vh !important;  
+
+  padding: 2rem 1rem;   
+  color: black !important;
+  box-sizing: border-box;
+
+}
+
+
+#servicesSection{
+  background-image: url('servicesSplashImg.png');
+  /* z-index:5; */
+}
+
+#shopSection{
+  background-image: url('shopSplashImg.png');
+  /* z-index:6; */
+}
+
+#bookSection{
+  background-image: url('bookSplashImg.png');
+  /* z-index:7; */
+}
+
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+#container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.panel {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  will-change: transform;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  overflow:hidden;
+
+}
+
+
+.scroll-box {
+  margin-top: 0;
+  background-color: white;
+  padding: 2rem;
+  width: 400px;
+  height: 200px;
+  color: #111;
+
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.scroll-box h2{
+  font-weight: 900;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.scroll-box p{
+  font-size: 13px;
+}
+
+
+
+.parallax-panel{
+  height: 125vh;
+}
+
+.heroLogo{
+  font-size: 50px;
+}
+
+footer {
+  height: 50vh;
+  background: black;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+}
+#homefooter{
+    margin-top: 50vh;
+}
+
+footer #logo h1{
+  font-weight: 700;
+}
+
+#info ul{
+  list-style-type: none; 
+}
+#info ul li{
+  margin-top: 10px;
+}
+
+.iframe-box {
+  width: 90vw;
+  max-width: 900px;
+  aspect-ratio: 16 / 9; /* maintain 16:9 ratio */
+  background-color: #ccc;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.iframe-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+.page-title-section{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 40vh; 
+  margin-top: 40px;
+  z-index: 10;
+
+  font-weight: 300;
+  border-bottom: white 3px solid;
+  padding-bottom: 50px;
+}
+
+#studioPageWrapper h2{
+  padding-top: 50px;
+}
