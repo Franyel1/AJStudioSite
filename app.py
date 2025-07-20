@@ -73,13 +73,13 @@ app.config.from_mapping(config)
 def home():
     return render_template("home.html")
 
-# @app.route('/book')
-# def book():
-#     return render_template('book.html')
+@app.route('/book')
+def book():
+    return render_template('book.html')
 
-@app.route('/services')
-def services():
-    return render_template('services.html')
+# @app.route('/services')
+# def services():
+#     return render_template('services.html')
 
 # @app.route('/shop')
 # def shop():
