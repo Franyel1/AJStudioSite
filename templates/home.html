@@ -6,161 +6,199 @@
 <div id="container">
 
   <!-- HERO SECTION -->
-  <section class="panel hero-section white text-white text-center d-flex align-items-center justify-content-center">
+  <section class="hero-section white text-white text-center d-flex align-items-center justify-content-center">
+    <video id="heroVideo" width="100%" height="100%" muted autoplay loop>
+      <source src="../static/video/coverVideo.mp4" type="video/mp4">
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+    Your browser does not support the video tag.
+    </video>
     <div id="heroContent">
-      <div id="logo">
-        <h1 class="display-4 fw-bold heroLogo">ANTONIO JEFFERSON</h1>
-        <h2 class="h3 heroLogo">STUDIO</h2>
-      </div>
-      <div class="scroll-indicator mt-4 scrollDisc">
-        <p class="mb-1">SCROLL TO DISCOVER</p>
-        <i class="bi bi-arrow-down"></i>
-      </div>
+    
+
+      <div id="heroLogo">ANTONIO JEFFERSON</div>
     </div>
   </section>
 
-  <!-- INTRO SECTION -->
-  <section id="introSec" class="panel intro-section">
-    <div class="container">
-      <div id="introHeading">
-        <h2 class="fw-bold text-uppercase mb-4">LOREM IPSUM DOLOR SIT AMET, ADIPISCING ELIT.</h2>
-      </div>
-      <p class="mx-auto mb-4" style="max-width: 600px;">
-        Lorem ipsum dolor sit amet. Mauris facilisis turpis tortor, at egestas metus dapibus eu...
-      </p>
-      <a href="{{ url_for('studio') }}" class="btn btn-dark">INSIDER LOOK</a>
+
+  <section class="introSection" >
+    <h2>Welcome To Antonio Jefferson Studio</h2>
+    <p>The Antonio Jefferson Studio is a modern sunlit space ideal for photo shoots, interviews, content days, and intimate creative events. Featuring stylish furniture, versatile backdrops, and natural lighting, the studio offers a warm and professional setting to bring your ideas to life. Located in the vibrant DUMBO area, it’s just steps away from top dining spots like Celestine, The River Cafe, Juliana’s, Time Out Market, Dumbo House, and Nobody Told Me, perfect for post shoot meals or client meetups. Easily accessible by multiple train lines and minutes from Manhattan, our studio balances comfort, convenience, and creative potential.</p>
+
+    <div class="btn"> Explore the Studio</div>
+
+    <h2 id="whyUs">Why Choose Us?</h2>
+    <p>Antonio Jefferson Studio is more than just a space,  it's a creative environment built for artists, brands, and storytellers. With natural light, professional-grade equipment, and a minimalist aesthetic, the studio is designed to adapt to your vision. Whether you're booking a shoot or renting the space for your own project, you'll find a clean, functional, and inspiring setting that supports quality work. From the curated amenities to the intentional layout, everything here is set up to make your process smoother and your final product stronger.</p>
+
+  </section>
+
+
+  <section class="servicesSection" >
+    <div id="splashServices">SERVICES</div>
+
+    <div id="boxes">
+        <div id="boxesRow1">
+          <div class="serviceBox">
+            <div class="serviceTitle">FAST ONLINE BOOKING</div>
+            <div class="serviceDesc">Reserve your studio time in just a few clicks!</div>
+          </div>
+          <div class="serviceBox">
+            <div class="serviceTitle">OPEN COMMUNICATION</div>
+            <div class="serviceDesc">We stay responsive and clear so you're never left guessing.</div>
+          </div>
+        </div>  
+        <div id="boxesRow2"> 
+          <div class="serviceBox">
+            <div class="serviceTitle">DUMBO LOCATION</div>
+            <div class="serviceDesc">Easily accessible and surrounded by creative energy, right where you need to be.</div>
+          </div>
+          <div class="serviceBox">
+            <div class="serviceTitle">CREATOR-FIRST DESIGN</div>
+            <div class="serviceDesc">Everything in the studio is set up to support your workflow, not get in the way.</div>
+          </div>
+        </div>
     </div>
   </section>
+
+
+  <section class="shopSection">
+      <div id="splashShop">SHOP</div>
+      <img id="shopIMG" src="../static/images/shopIMG.png">
+
+      <h2>More Than A Studio</h2>
+      <p>Antonio Jefferson Studio isn't just a space: it's a creative brand. Alongside the photo studio, we also drop limited-run merch that reflects the same energy that drives the work happening inside these walls. Designed in-house and released in small batches, every piece ties back to the culture, style, and creative mindset that defines the studio. Whether you're pulling up to shoot or repping the brand out in the world, the goal is the same: to build something real, intentional, and rooted in community.</p>
+      
+  </section>
+
+
+  <section class="bookNowSection" >
+      <div id="splashBookNow">BOOK NOW</div>
+
+      <h2>Reserve the Space That Works for You</h2>
+      <p>Natural light. Essential gear. Hassle-free booking. Secure your time in our Brooklyn studio today</p>
+
+      <div id="images">
+        <div id="row1">
+          <img class="bookNowImg" src="../static/compressedImg/IMG_0208-1edit-min.jpg"/>
+          <img class="bookNowImg" src="../static/compressedImg/_53A1217-editfinal-min.jpg"/>
+        </div>
+        <div id="row2">
+          <img class="bookNowImg" src="../static/compressedImg/DJI_0880-edit-min.jpg"/>
+          <img class="bookNowImg" src="../static/compressedImg/_53A1288-EDIT-min.jpg"/>
+        </div>
+        <div id="row3">
+          <img class="bookNowImg" src="../static/compressedImg/_53A1289-EDIT-min.jpg"/>
+          <img class="bookNowImg" src="../static/compressedImg/DJI_0816-edit-min.jpg"/>
+        </div>
+      </div>
+
+  </section>
+
+  <div id="questions">
+
+    <h3 id="anyQ">Any Questions?</h3>
+    <a href="{{ url_for('contact') }}">Contact Us</a>
+
+  </div>
 
   <a id="contactBtn">CONTACT US</a>
-  
-  <!-- STACKED PANELS -->
-  <section class="panel orange parallax-panel clip-panel" style="background-image: url('/static/servicesSplashImg.png');">
-    <div class="scroll-box">
-      <h2>SERVICES</h2>
-      <p>We offer professional photography, videography, and content creation services tailored to artists, brands, and creatives.</p>
-    </div>
-  </section>
-
-  <section class="panel purple parallax-panel clip-panel" style="background-image: url('/static/shopSplashImg.png');">
-    <div class="scroll-box">
-      <h2>SHOP</h2>
-      <p>Explore our curated collection of studio apparel, gear, and limited-edition drops. Designed by creators, for creators. Your next favorite piece is waiting.</p>
-    </div>
-  </section>
-
-  <section class="panel dark parallax-panel clip-panel" style="background-image: url('/static/bookSplashImg.png');">
-    <div class="scroll-box">
-      <h2>BOOK NOW</h2>
-      <p>Reserve time in our cutting-edge space for your next shoot, session, or event. Flexible layouts. World-class equipment. Boundless creative freedom.</p>
-    </div>
-  </section>
-
-
-    {% block footer %}
-    <footer id="homefooter">
-        <div id="logo">
-            <h1>ANTONIO JEFFERSON</h1>
-            <h2>STUDIO</h2>
-        </div>
-        <div id="info">
-            <ul>
-                <li>New York City</li>
-                <li>53 Bridge St. #707<br>Brooklyn, NY</li>
-                <li>PHONE: 000-000-0000</li>
-                <li>INFO@AJSTUDIOS.COM</li>
-                <li>
-                    <i class="bi bi-instagram"></i>
-                    <i class="bi bi-linkedin"></i>
-                </li>
-            </ul>
-        </div>
-    <footer>
-    {% endblock %}
-
 
 </div>
 
-<!-- GSAP + ScrollTrigger -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
 <script>
-gsap.registerPlugin(ScrollTrigger);
+  const { scroll, animate } = Motion
 
-// set z-index stack
-gsap.set('.panel', {
-  zIndex: (i, el, list) => list.length - i
-});
-
-const panels = gsap.utils.toArray(".panel:not(:last-child)");
-
-gsap.to(panels, {
-  scrollTrigger: {
-    trigger: "#container",
-    start: "top top",
-    end: () => {
-      const panelsHeight = panels.length * window.innerHeight;
-      const revealCutoff = window.innerHeight - 350;
-      return panelsHeight - revealCutoff;
-    },
-    scrub: true,
-    pin: true,
-    anticipatePin: 1
-  },
-  yPercent: (i, el) => {
-    if (i === panels.length - 1) {
-      return -60; // lock last panel at -60%
-    }
-    return i === 0 ? -100 : -125;
-  },
-  ease: "none",
-  stagger: 0.3
-});
-
-
-gsap.to("#heroContent", {
-  scrollTrigger: {
-    trigger: ".hero-section",
-    start: "top top",
-    end: "bottom top",
-    scrub: true
-  },
-  opacity: 0,
-  y: 200, // more dramatic drop
-  ease: "power2.out"
-});
-
-
-
-function updateScrollBoxPositions() {
-  const boxes = document.querySelectorAll('.scroll-box');
-
-  boxes.forEach(box => {
-    const section = box.closest('.panel');
-    const rect = section.getBoundingClientRect();
-    const vh = window.innerHeight;
-    const boxHeight = box.offsetHeight;
-
-    // Check if section is visible in viewport
-    if (rect.top < vh && rect.bottom > 0) {
-      // Center the box in viewport relative to the section scroll position
-      const marginTop = Math.max(0, (vh - boxHeight) / 2 - rect.top);
-      box.style.marginTop = `${marginTop}px`;
-    } else {
-      // If not visible, avoid layout jump
-      box.style.marginTop = `0px`;
-    }
+  document.querySelectorAll(".bookNowImg").forEach((img, i) => {
+    const targetOpacity = 0.9 + 0.1 * (i % 4); // 0.6 → 0.9
+    
+    scroll(
+      animate(img, { opacity: [0, targetOpacity] }, { duration: 1 }),
+      {
+        target: img,
+        offset: ["start 90%", "end 50%"]
+      }
+    );
   });
-}
 
-// Listen to scroll and resize events
-window.addEventListener('scroll', updateScrollBoxPositions);
-window.addEventListener('resize', updateScrollBoxPositions);
-window.addEventListener('load', updateScrollBoxPositions);
+  const directions = [
+    { x: [-500, 0] }, // left
+    { x: [500, 0] },  // right
+    { y: [500, 0] },  // bottom
+    { x: [500, 0] },  // right again
+  ]
+  const directions2 = [
+    { x: [-300, 0] }, // left
+    { x: [300, 0] },  // right
+    { x: [-300, 0] }, // left
+    { x: [300, 0] },  // right
+  ]
+    
+  if (window.innerWidth >= 768) {
+    document.querySelectorAll(".serviceBox").forEach((box, i) => {
+      scroll(
+        animate(box, {
+          ...directions[i],
+          opacity: [0, 1]
+        }, {
+          duration: 0.6,
+          easing: 'ease-out'
+        }),
+        {
+          target: box,
+          offset: ['start 90%', 'end 80%']
+        }
+      );
+    });
+  }
+  else{
+    document.querySelectorAll(".serviceBox").forEach((box, i) => {
+      scroll(
+        animate(box, {
+          ...directions2[i],
+          opacity: [0, 1]
+        }, {
+          duration: 0.4,
+          easing: 'ease-out'
+        }),
+        {
+          target: box,
+          offset: ['start 100%', 'end 80%']
+        }
+      );
+    });
+  }
 
+   scroll(
+    animate("#heroLogo", {
+      scaleX: [1, 0.6],
+      scaleY: [2.5, 1],
+    }, {
+      easing: "ease-in-out",
+      transformOrigin: "center bottom",
+    }),
+    {
+      target: document.body,
+      offset: ["start start", "center start"],
+    }
+  )
 
-
+  scroll(
+    animate("#contactBtn", { 
+      opacity: [0, 1] 
+    }, {
+      duration: 0.3,
+      easing: "ease-in-out",
+      onUpdate(latest) {
+        // Optional: toggle pointer-events based on opacity
+        const btn = document.getElementById("contactBtn");
+        btn.style.pointerEvents = latest >= 0.5 ? "auto" : "none";
+      }
+    }),
+    {
+      target: document.body,
+      offset: ["start start", "40px start"], // starts at 40px
+    }
+  );
 </script>
 
 

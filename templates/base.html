@@ -8,12 +8,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="../static/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
+
 </head>
 <body>
   <div id="smooth-wrapper">
     <div id="smooth-content">
 
-      <nav class="navbar navbar-expand-lg navbar-dark py-1 custom-navbar">
+      <nav class="navbar navbar-expand-lg custom-navbar {% if request.endpoint == 'home' %}whiteNav{% endif %}">
         <div class="container-fluid">
           <!-- Logo -->
           <a class="navbar-brand text-uppercase fw-bold" href="/" id="logo">
@@ -27,18 +30,27 @@
 
           <!-- Nav Items -->
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto gap-4 text-uppercase fw-semibold">
+            <ul class="navbar-nav ms-auto gap-5">
               <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'book' %}active{% endif %}" href="{{ url_for('book') }}">Book</a>
+                <a class="bookNav nav-link {% if request.endpoint == 'book' %}active{% endif %}" href="{{ url_for('book') }}">Book Now</a>
+              </li>
+              <!-- <li class=" nav-item">
+                <a class="servicesNav nav-link {% if request.endpoint == 'services' %}active{% endif %}" href="{{ url_for('services') }}">Services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'services' %}active{% endif %}" href="{{ url_for('services') }}">Services</a>
+                <a class="shopNav nav-link {% if request.endpoint == 'shop' %}active{% endif %}" href="{{ url_for('shop') }}">Shop</a>
+              </li> -->
+              <li class="nav-item">
+                <a class="studioNav nav-link {% if request.endpoint == 'studio' %}active{% endif %}" href="{{ url_for('studio') }}">Studio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'shop' %}active{% endif %}" href="{{ url_for('shop') }}">Shop</a>
+                <a class="contactNav nav-link {% if request.endpoint == 'contact' %}active{% endif %}" href="{{ url_for('contact') }}">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'studio' %}active{% endif %}" href="{{ url_for('studio') }}">Studio</a>
+                <a class="nav-link" href="https://www.instagram.com/antoniojeffersonstudio/?hl=en"><i style="font-size: 22px;"class="bi bi-instagram"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="donateBtn btn nav-link" href="https://www.paypal.com/donate/?hosted_button_id=3XCLBVN7KEYFG">Donate Now</a>
               </li>
             </ul>
           </div>
@@ -56,13 +68,11 @@
             </div>
             <div id="info">
                 <ul>
-                    <li>New York City</li>
                     <li>53 Bridge St. #707<br>Brooklyn, NY</li>
-                    <li>PHONE: 000-000-0000</li>
-                    <li>INFO@AJSTUDIOS.COM</li>
+                    <li>PHONE: (917)·215·5100</li>
+                    <li><a href="mailto:info@antoniojefferson.com">info@antoniojefferson.com</a></li>
                     <li>
-                        <i class="bi bi-instagram"></i>
-                        <i class="bi bi-linkedin"></i>
+                        <a href="https://www.instagram.com/antoniojeffersonstudio/?hl=en"><i class="bi bi-instagram"></i></a>
                     </li>
                 </ul>
             </div>
