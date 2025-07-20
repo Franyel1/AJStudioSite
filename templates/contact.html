@@ -4,7 +4,191 @@
 
 {% block content %}
 
+<div id="contactWrapper">
+    <h1>CONTACT</h1>
+    <h2>Let's get in <br>touch</h1>
+    <section id="directContact">
+        <div id="getInTouch">
+            <div id="contactInfo">
+                <div id="contactDetCol1">
+                    <div>
+                        <h3>ADDRESS</h3>
+                        <p>53 Bridge Street<br>Brooklynn, NY 11201<br><a href="https://maps.app.goo.gl/1kqc4YEConovDc5H8">Get Directions</a></p>
+                    </div>
+                    <div>
+                        <h3>CONTACT INFO</h3>
+                        <p style="font-style: italic;">(917) 215-5100<br>info@antoniojefferson.com</p>
+                    </div>
+                </div>
 
+                <div id="contactDetCol2">
+                    <div>
+                        <h3>STUDIO HOURS</h3>
+                        <p>Monday-Sunday: 8am - 12am<br>Need a custom time slot?<br><a href="mailto:info@antoniojefferson.com">Reach out!</a></p>
+                    </div>
+                    <div>
+                        <h3>FOLLOW US</h3>
+                        <a id="contactInsta" href="https://www.instagram.com/antoniojeffersonstudio/?hl=en"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contactFormWrapper">
+            <form id="contactForm" action="/contact" method="POST">
+                <label>Name</label>
+                <input type="text" name="name">
+
+                <label>Email <span style="color: gray;">(required)</span></label>
+                <input type="email" name="email" required>
+
+                <label>Subject <span style="color: gray;">(required)</span></label>
+                <input type="text" name="subject" required>
+
+                <label>Message <span style="color: gray;">(required)</span></label>
+                <textarea name="message" required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.690847906436!2d-73.9868995227098!3d40.70280587139498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f56ef04178f5%3A0x6b66ad2285b397c1!2sAntonio%20Jefferson%20Studio!5e0!3m2!1sen!2sus!4v1750650206406!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <section id="faq">
+        <h1>Frequently<br>Asked<br>Questions.</h1>
+
+        <div class="accordion-container">
+            <p style="border-top: 1px solid #999;" class="accordion">Hours</p>
+            <div class="accordion-content">
+                <p>
+                Studio hours: <strong>8:00 AM - 12:00 AM</strong><br>
+                </p>
+                <br>
+            </div>
+
+            <p class="accordion">Setup and Booking Time</p>
+            <div class="accordion-content">
+                <p>
+                Please note that all start and end times include setup and break down time.
+                Early arrivals may be let in 5 minutes early. We schedule our employees and cleaning times to accommodate only the hours your booking is scheduled for. <br>
+                <strong>Any late check-outs will be charged a full additional hour.</strong>
+                </p>
+                <br>
+            </div>
+            
+                <p class="accordion">Policies and Rules</p>
+            <div class="accordion-content">
+                    <ul>
+                        <li>Please be considerate of our neighbors. Our space is not sound-proof.</li>
+                        <li>No shoes are allowed on backdrops besides talent. You must either take your shoes off or put on shoe covers.</li>
+                        <li>We love our plants— they're part of what our guests love and what makes our studio special. Please don't damage them; handle with care if you need to move anything for your setup.</li>
+                        <li>Food and drinks are not allowed on any furniture. Any damage caused to the furniture will result in additional fees.</li>
+                        <li>Please do not remove wall photos unless discussed with the staff prior.</li>
+                        <li>When moving furniture, please do not drag. Move furniture with 2 or more people picking it up.</li>
+                        <li>Please return all furniture and props to their original position before leaving.</li>
+                        <li>Please do not use body oil, body sprays, or self-tans that can stain the furniture.</li>
+                        <li>Overtime fees apply if you require extra time to move things, load/unload. Your booking starts from the time you book, not at the time of arrival. Please book appropriately to avoid any extra charges.</li>
+                    </ul>
+                <br>
+            </div>
+
+            <p class="accordion">Accessibility</p>
+            <div class="accordion-content">
+                <p>
+                The studio is accessible by wheelchair and other forms of mobility assistance. The building entrance has a ramp, and there are three elevators that provide access to the studio on the 7th floor.
+                </p>
+                <br>
+            </div>
+
+            <p class="accordion">Studio Access</p>
+            <div class="accordion-content">
+                <p>
+                Upon your arrival to the building, enter the double doors to the left of the “53 Bridge Street” sign on the building. Proceed to the next set of double doors where you will find the elevators to the right. The studio is located on the 7th floor. For studio entry, there is a lock box on the door which the code is given the morning of your booking. There will be a key to get into the studio door and a keycard to access the building and the elevator (after 7pm, the entry door to the building and elevator locks).
+                </p>
+                <br>
+            </div>
+
+            <p class="accordion">Refunds</p>
+            <div class="accordion-content">
+                <p>
+                Guests may cancel their Booking 48 hours before the event start time and will receive a full refund (including all Fees) of their Booking Price. Guests may cancel their Booking 24 hours before the event start time and receive a 50% refund (excluding Fees) of their Booking Price. Booking cancellations submitted less than 24 hours before the Event start time are not refundable. There are no refunds for unused time. Booked hours are booked hours.
+                </p>
+                <br>
+            </div>
+            <p class="accordion">Can I host events, classes, or pop-ups in the studio?</p>
+            <div class="accordion-content">
+                <p>
+                Yes! Our space is versatile and available for photoshoots, content creation, events, classes, and op-ups. Just let us know the nature of your booking ahead of time.
+                </p>
+                <br>
+            </div>
+
+            <p class="accordion">Can I tour the space before booking?</p>
+            <div class="accordion-content">
+                <p>
+                Yes, studio tours are available by appointment only. Please reach out to schedule a walkthrough before your desired date.
+                </p>
+                <br>
+            </div>
+
+            <p class="accordion">Is there someone on-site during my rental?</p>
+            <div class="accordion-content">
+                <p>
+                A studio manager may be available to assist at check-in and check-out, but the space is otherwise self-managed unless staffing has been arranged in advance.
+                </p>
+                <br>
+            </div>
+
+            <p class="accordion">Do you offer discounts for full-day or multi-day bookings?</p>
+            <div class="accordion-content">
+                <p>
+                Yes, we offer discounted rates for full-day, multi-day, and recurring rentals. Reach out directly for custom pricing.
+                </p>
+                <br>
+            </div>
+
+            <p class="accordion">What amenities are included in the rental?</p>
+            <div class="accordion-content">
+                <p>
+                The rental includes access to natural lighting, backdrops, Wi-Fi, basic grip equipment, and seating. Additional gear may be available upon request.
+                </p>
+                <br>
+        </div>
+
+
+        </section>
+</div>
+
+    
+<script>
+  (function() {
+  const accordionHeading = document.querySelectorAll(".accordion");
+  const accordionContent = document.querySelectorAll(".accordion-content");
+
+  for (let i = 0; i < accordionHeading.length; i++) {
+    accordionHeading[i].onclick = function() {
+      if (this.nextElementSibling.style.maxHeight) {
+        hideContent();
+      } else {
+        showContent(this);
+      }
+    };
+  }
+
+  function showContent(elem) {
+    hideContent();
+    elem.classList.add("active");
+    elem.nextElementSibling.style.maxHeight =
+      elem.nextElementSibling.scrollHeight + "px";
+  }
+
+  function hideContent() {
+    for (let i = 0; i < accordionContent.length; i++) {
+      accordionContent[i].style.maxHeight = null;
+      accordionHeading[i].classList.remove("active");
+    }
+  }
+  })();
+</script>
 
 
 
