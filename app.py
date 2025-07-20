@@ -20,8 +20,8 @@ config = dotenv_values()
 app.config.from_mapping(config)
 
 # Initialize MongoDB
-client = pymongo.MongoClient(os.getenv("MONGO_URI"))
-db = client[os.getenv("MONGO_DBNAME")]
+# client = pymongo.MongoClient(os.getenv("MONGO_URI"))
+# db = client[os.getenv("MONGO_DBNAME")]
 
 # # Flask-Login setup
 # login_manager = flask_login.LoginManager()
