@@ -1,30 +1,30 @@
 @font-face {
-  font-family: Oswald-Bold;
-  src: url(fonts/oswald/Oswald-Bold.ttf);
-}
-@font-face {
-  font-family: Oswald-Regular;
-  src: url(fonts/oswald/Oswald-Regular.ttf);
-}
-@font-face {
-  font-family: Druk;
-  src: url(fonts/DrukWideBold.ttf);
-}
-@font-face {
-  font-family: Gothic;
-  src: url(fonts/Gothic_A1/GothicA1-Regular.ttf);
-}
-@font-face {
-  font-family: Roboto;
-  src: url(fonts/roboto/Roboto-Regular.ttf);
-}
-@font-face {
   font-family: Roboto-bold;
-  src: url(fonts/roboto/Roboto-Bold.ttf);
+  src: url('/static/fonts/roboto/Roboto-Bold.ttf') format('truetype');
 }
 @font-face {
   font-family: Roboto-light;
-  src: url(fonts/roboto/Roboto-Light.ttf);
+  src: url('/static/fonts/roboto/Roboto-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: Roboto;
+  src: url('/static/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: Gothic;
+  src: url('/static/fonts/Gothic_A1/GothicA1-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: Druk;
+  src: url('/static/fonts/DrukWideBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: Oswald-Bold;
+  src: url('/static/fonts/oswald/Oswald-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: Oswald-Regular;
+  src: url('/static/fonts/oswald/Oswald-Regular.ttf') format('truetype');
 }
 
 html, body {
