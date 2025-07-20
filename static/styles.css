@@ -489,7 +489,7 @@ p{
 
 #anyQ{
   font-family: Onder;
-  font-size: 25px;
+  font-size: 15px;
 }
 
 #questions a, #questions a:link{
@@ -500,7 +500,7 @@ p{
   color: black;
   font-family: Onder;
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 15px;
   margin: 30px;
   transition:.5s;
 }
@@ -623,10 +623,10 @@ p{
     margin-top: 20px;
   }
   #anyQ{
-    font-size: 24px;
+    font-size: 12px;
   }
   #questions a, #questions a:link{
-    font-size: 20px;
+    font-size: 10px;
   }
 
   footer {
