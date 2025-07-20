@@ -1208,13 +1208,14 @@ li{
   #faq h1{
     padding-bottom: 50px;
     margin-right: 0px;
-    font-size: 7vw;
+    font-size: 4vw;
+    line-height: 8vw;
   }
   #contactWrapper>h2{
-    font-size: 6vw;
+    font-size: 7vw;
   }
   #contactWrapper>h1{
-    font-size: 10vw;
+    font-size: 7vw;
   }
 
   #contactForm{
