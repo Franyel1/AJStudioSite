@@ -1,31 +1,60 @@
 @font-face {
-  font-family: Roboto-bold;
-  src: url('/static/fonts/roboto/Roboto-Bold.ttf') format('truetype');
+  font-family: 'Oswald-Bold';
+  src: url('/static/fonts/oswald-bold-webfont.woff2') format('woff2'),
+       url('/static/fonts/oswald-bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: Roboto-light;
-  src: url('/static/fonts/roboto/Roboto-Light.ttf') format('truetype');
+  font-family: 'Oswald-Regular';
+  src: url('/static/fonts/oswald-regular-webfont.woff2') format('woff2'),
+       url('/static/fonts/oswald-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: Roboto;
-  src: url('/static/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+  font-family: 'Roboto-bold';
+  src: url('/static/fonts/roboto-bold-webfont.woff2') format('woff2'),
+       url('/static/fonts/roboto-bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: Gothic;
-  src: url('/static/fonts/Gothic_A1/GothicA1-Regular.ttf') format('truetype');
+  font-family: 'Roboto-light';
+  src: url('/static/fonts/roboto-light-webfont.woff2') format('woff2'),
+       url('/static/fonts/roboto-light-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: Druk;
-  src: url('/static/fonts/DrukWideBold.ttf') format('truetype');
+  font-family: 'Roboto';
+  src: url('/static/fonts/roboto-regular-webfont.woff2') format('woff2'),
+       url('/static/fonts/roboto-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: Oswald-Bold;
-  src: url('/static/fonts/oswald/Oswald-Bold.ttf') format('truetype');
+  font-family: 'Gothic';
+  src: url('/static/fonts/gothica1-semibold-webfont.woff2') format('woff2'),
+       url('/static/fonts/gothica1-semibold-webfont.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: Oswald-Regular;
-  src: url('/static/fonts/oswald/Oswald-Regular.ttf') format('truetype');
+  font-family: 'Druk';
+  src: url('/static/fonts/drukwidebold-webfont.woff2') format('woff2'),
+       url('/static/fonts/drukwidebold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
+
+
 
 html, body {
   height: 100%;
