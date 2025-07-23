@@ -3,6 +3,7 @@
 import os
 import flask_login
 import pymongo
+import requests
 from bson.objectid import ObjectId
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -92,12 +93,26 @@ def studio():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
+        # Verify reCAPTCHA
+        recaptcha_response = request.form.get('g-recaptcha-response')
+        payload = {
+            'secret': os.getenv('RECAPTCHA_SECRET_KEY'),
+            'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=payload)
+        result = r.json()
+
+        if not result.get('success'):
+            flash("reCAPTCHA verification failed. Please try again.")
+            return redirect('/contact')
+        
+
         name = request.form.get('name', '').strip()
         email = request.form.get('email', '').strip()
         subject = request.form.get('subject', '').strip()
         message = request.form.get('message', '').strip()
 
-        if not name or not email or not subject or not message:
+        if not email or not subject or not message:
             flash("All fields are required.")
             return redirect('/contact')
         
@@ -141,7 +156,7 @@ def contact():
 
         return redirect('/contact')
 
-    return render_template('contact.html')
+    return render_template("contact.html", recaptcha_site_key=os.getenv("RECAPTCHA_SITE_KEY"))
 
 
 if __name__ == "__main__":
