@@ -92,10 +92,22 @@ def studio():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        name = request.form.get('name', 'No Name Provided')
-        email = request.form.get('email', 'No Email Provided')
-        subject = request.form.get('subject', 'No Subject Provided')
-        message = request.form.get('message', '')
+        name = request.form.get('name', '').strip()
+        email = request.form.get('email', '').strip()
+        subject = request.form.get('subject', '').strip()
+        message = request.form.get('message', '').strip()
+
+        if not name or not email or not subject or not message:
+            flash("All fields are required.")
+            return redirect('/contact')
+        
+        if request.form.get('website'):
+            # bot filled the hidden field
+            return redirect('/contact')
+        
+        
+        
+
 
         full_msg = "\n".join([
             "✨ New message from the Antonio Jefferson Studio contact form ✨",
