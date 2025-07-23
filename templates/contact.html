@@ -48,6 +48,8 @@
                 <textarea name="message" required></textarea>
                 <input type="text" name="website" style="display:none;">
 
+                <div style="padding-top: 10px;" class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+
                 <button type="submit">Send</button>
             </form>
         </div>
@@ -159,7 +161,7 @@
         </section>
 </div>
 
-    
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
   (function() {
   const accordionHeading = document.querySelectorAll(".accordion");
@@ -189,6 +191,13 @@
     }
   }
   })();
+
+  window.addEventListener('load', () => {
+    const $recaptcha = document.querySelector('#g-recaptcha-response');
+    if ($recaptcha) {
+        $recaptcha.setAttribute('required', 'required');
+    }
+    })
 </script>
 
 
