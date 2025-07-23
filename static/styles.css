@@ -367,14 +367,24 @@ footer #logo h2{
   text-align: center;
 
 }
+ .servicesSection, .shopSection, .bookNowSection{
+  margin-top: 13vw;
+}
+.introSection h2{
+  margin-top: 2vw;
+}
+.introSection div{
+  margin-top: 2vw;
+  margin-bottom: 5vw;
+}
 
+ #whyUs{
+  margin-top: 6vw;
+ }
 h2{
   font-weight: 600;
   font-family: Roboto-bold;
   margin-bottom: 20px;
-}
-#whyUs{
-  margin-top: 80px;
 }
 p{
   font-size: 20px;
@@ -527,7 +537,7 @@ p{
 #boxesRow2{
   margin-left: 300px;
 }
-@media (max-width: 800px) {
+@media (max-width:  1000px) {
   #boxes>div{
     flex-direction: column;
     align-items: center;
@@ -691,7 +701,6 @@ p{
 }
 
 .rental{
-  color: gray; 
   font-weight: bold;
 }
 
@@ -885,7 +894,7 @@ p{
 
 #studioSlide, #studioSlide .carousel-item img{
   object-fit: cover;
-  height: 95vh;
+  height: 100vh;
   width:100%;
 }
 
@@ -944,8 +953,16 @@ p{
   margin-bottom: 40px;
 }
 
-#studioContent section{
-  margin-top: 30px;
+#virtualTour, #studioDetails, #studioImgs{
+  margin-top: 5vw;
+}
+
+#studioBlurb{
+  margin-top: 2vw;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-wrap: pretty; 
 }
 
 #studioImgs{
@@ -965,7 +982,7 @@ p{
   text-align: left;
   width: 45%;
   font-family: Roboto-light;
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 #studioDetailsLists ul li{
   margin-bottom: 5px;
@@ -973,8 +990,8 @@ p{
 #studioDetailsLists{
   display: flex;
   flex-direction: row;
-  margin-top: 50px;
-  margin-bottom: 20px;
+  margin-top: calc(5vw);
+  margin-bottom: 50px;
   justify-content:center;
 }
 
@@ -1094,6 +1111,7 @@ li{
 }
 
 #contactWrapper>h1{
+  margin-top: 5vw;
   font-size: 5vw;
   font-family: Onder;
 }
@@ -1101,6 +1119,7 @@ li{
 #contactWrapper>h2{
   font-family: Roboto-bold;
   font-size: 4vw;
+  margin-top: 5vw;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -1139,6 +1158,16 @@ li{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 5vw;
+}
+.accordion-content p a:link{
+  color:#878787;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#getInTouch{
+  margin-top:2vw;
 }
 #contactFormWrapper{
   width:50%;
@@ -1153,7 +1182,7 @@ li{
 #contactForm label{
   font-family: Roboto;
   font-size: 20px;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-bottom: 3px;
 }
 #contactForm input,#contactForm textarea{
