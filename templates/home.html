@@ -7,7 +7,7 @@
 
   <!-- HERO SECTION -->
   <section class="hero-section white text-white text-center d-flex align-items-center justify-content-center">
-    <video id="heroVideo" width="100%" height="100%" muted autoplay loop>
+    <video id="heroVideo" width="100%" height="100%" poster="../static/video/coverGif.gif" muted autoplay loop playsinline preload="auto">
       <source src="../static/video/coverVideo.mp4" type="video/mp4">
       <!-- <source src="movie.ogg" type="video/ogg"> -->
     Your browser does not support the video tag.
@@ -24,7 +24,7 @@
     <h2>Welcome To Antonio Jefferson Studio</h2>
     <p>The Antonio Jefferson Studio is a modern sunlit space ideal for photo shoots, interviews, content days, and intimate creative events. Featuring stylish furniture, versatile backdrops, and natural lighting, the studio offers a warm and professional setting to bring your ideas to life. Located in the vibrant DUMBO area, it’s just steps away from top dining spots like Celestine, The River Cafe, Juliana’s, Time Out Market, Dumbo House, and Nobody Told Me, perfect for post shoot meals or client meetups. Easily accessible by multiple train lines and minutes from Manhattan, our studio balances comfort, convenience, and creative potential.</p>
 
-    <div class="btn"> Explore the Studio</div>
+    <a href="{{ url_for('studio') }}"><div class="btn">Explore the Studio</div></a>
 
     <h2 id="whyUs">Why Choose Us?</h2>
     <p>Antonio Jefferson Studio is more than just a space,  it's a creative environment built for artists, brands, and storytellers. With natural light, professional-grade equipment, and a minimalist aesthetic, the studio is designed to adapt to your vision. Whether you're booking a shoot or renting the space for your own project, you'll find a clean, functional, and inspiring setting that supports quality work. From the curated amenities to the intentional layout, everything here is set up to make your process smoother and your final product stronger.</p>
@@ -91,6 +91,18 @@
         </div>
       </div>
 
+<div id="animation">
+  <div id="aj-orbit-wrapper">
+    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/IMG_0208-1edit-min.jpg');"></div>
+    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/_53A1217-editfinal-min.jpg');"></div>
+    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/DJI_0880-edit-min.jpg');"></div>
+    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/_53A1288-EDIT-min.jpg');"></div>
+    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/_53A1289-EDIT-min.jpg');"></div>
+    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/DJI_0816-edit-min.jpg');"></div>
+  </div>
+</div>
+
+
   </section>
 
   <div id="questions">
@@ -105,11 +117,156 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
+
 <script>
+let focusedIndex = null;
+const body = document.body;
+window.addEventListener("DOMContentLoaded", () => {
+  const panels = document.querySelectorAll(".aj-orbit-piece");
+  const wrapper = document.getElementById("aj-orbit-wrapper");
+  const animationContainer = document.getElementById("animation");
+  const radius = window.innerWidth * 0.06;
+
+  const centerX = 0;
+  const centerY = 0;
+  const centerZ = 0;
+
+  const screenW = window.innerWidth;
+  const baseX = screenW * (screenW < 768 ? 0.12 : screenW < 1024 ? 0.08 : 0.05);
+  const positions = [
+    { x: -baseX * 2.5, y: -120, z: 100 },
+    { x: -baseX * 3.5, y: 120, z: 50 },
+    { x: -baseX * 1.5, y: -90, z: 0 },
+    { x: baseX * 0.5, y: 100, z: -50 },
+    { x: baseX * 1.5, y: -80, z: -100 },
+    { x: baseX * 3.5, y: 80, z: 80 },
+  ];
+
+  // Initial placement
+  panels.forEach((el, i) => {
+    const pos = positions[i];
+    el.dataset.startX = pos.x;
+    el.dataset.startY = pos.y;
+    el.dataset.startZ = pos.z;
+  });
+
+  panels.forEach((el, i) => {
+    el.style.transition = "transform 0.6s linear, opacity 0.6s";
+
+    el.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent bubbling to body
+      if (focusedIndex === i) {
+        focusedIndex = null;
+      } else {
+        focusedIndex = i;
+      }
+    });
+  });
+  
+  body.addEventListener("click", () => {
+    if (focusedIndex !== null) {
+      focusedIndex = null;
+    }
+  });
+
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    const rect = wrapper.getBoundingClientRect();
+    mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+  });
+
+  function updateRotation() {
+    const rotateX = mouseY * 10;
+    const rotateY = -mouseX * 10;
+    panels.forEach((el) => {
+      const match = el.style.transform.match(/translate3d\([^)]+\)/);
+      if (match) {
+        el.style.transform = `${match[0]} rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
+      }
+    });
+  }
+
+  function updateScrollAnimation() {
+    const rect = animationContainer.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    let progress = 1.2 - (rect.top + rect.height / 2 - viewportHeight / 2) / viewportHeight;
+    progress = Math.min(Math.max(progress, 0), 1);
+
+    panels.forEach((el, i) => {
+      const pos = positions[i];
+
+      if (focusedIndex === i) {
+        el.style.zIndex = 10;
+        el.style.transform = `translate3d(0px, 0px, 400px) scale(3) rotateX(0deg) rotateY(0deg)`;
+        el.style.opacity = 1;
+      } else {
+        const angle = Math.PI + i * 0.8 + (1 - progress) * Math.PI;
+        const orbitX = Math.cos(angle) * radius * progress;
+        const orbitZ = Math.sin(angle) * radius * progress;
+
+        const moveX = centerX * (1 - progress) + pos.x * progress + orbitX;
+        const moveY = centerY * (1 - progress) + pos.y * progress;
+        const moveZ = centerZ * (1 - progress) + pos.z * progress + orbitZ;
+
+        const scale = 0.2 + progress * 0.9;
+        const opacity = focusedIndex === null ? progress : 0.3;
+
+        el.style.zIndex = 1;
+        el.style.transform = `translate3d(${moveX}px, ${moveY}px, ${moveZ}px) scale(${scale}) rotateX(${-mouseY * 10}deg) rotateY(${-mouseX * 10}deg)`;
+        el.style.opacity = opacity;
+      }
+    });
+  }
+
+
+  function loop() {
+    updateScrollAnimation();
+    updateRotation();
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+function scaleToFit() {
+  const targetWidth = window.innerWidth * 0.8;
+  const baseWidth = 1100; // assumed base layout width
+  const scale = targetWidth / baseWidth;
+
+  const wrapper = document.getElementById("aj-orbit-wrapper");
+  wrapper.style.transform = `scale(${scale})`;
+  wrapper.style.transformOrigin = "center";
+}
+
+window.addEventListener("resize", scaleToFit);
+scaleToFit();
   const { scroll, animate } = Motion
 
   document.querySelectorAll(".bookNowImg").forEach((img, i) => {
-    const targetOpacity = 0.9 + 0.1 * (i % 4); // 0.6 → 0.9
+    const targetOpacity = 0.9 + 0.1 * (i % 4);
     
     scroll(
       animate(img, { opacity: [0, targetOpacity] }, { duration: 1 }),
@@ -199,6 +356,7 @@
       offset: ["start start", "40px start"], // starts at 40px
     }
   );
+
 </script>
 
 
