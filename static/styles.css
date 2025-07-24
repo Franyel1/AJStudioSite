@@ -80,6 +80,11 @@ a:link{
   text-decoration: none;
 }
 
+.btn:hover{
+  color:black;
+}
+
+
 #contactBtn{
   position: fixed;
   bottom: 1vh;
@@ -552,6 +557,9 @@ p{
   }
 
 }
+#images{
+  display:none;
+}
 
 
 @media (max-width: 600px) {
@@ -600,6 +608,7 @@ p{
     width: 100%;
     padding-left: 0;
     padding-right: 25%;
+    display: block;
   }
 
   .bookNowImg {
@@ -613,6 +622,9 @@ p{
     padding-left: 0;
     margin-bottom: 0;
     padding:0;
+  }
+  #animation{
+    display:none;
   }
 
   #row3{
@@ -659,6 +671,7 @@ p{
   }
 
 }
+
 
 /*################################################################################*/
 
@@ -1257,4 +1270,46 @@ li{
     width:100%;
   }
 }
+
+
+#animation {
+  position: relative;
+  height: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#aj-orbit-wrapper {
+  position: absolute;
+  width: 800px;
+  height: 700px;
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aj-orbit-piece {
+  position: absolute;
+  width: 250px;
+  height: 180px;
+  border-radius: 20px;
+  transform: scale(1);
+  opacity: 1;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 600px) {
+  #animation{
+    display:none
+  }
+}
+
+
+
 
