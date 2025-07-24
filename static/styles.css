@@ -333,6 +333,10 @@ footer #logo h2{
   border: none;
 }
 
+video::-webkit-media-controls {
+  display: none;
+}
+
 
 .page-title-section{
   background-size: cover;
