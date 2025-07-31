@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div id="container">
+<div id="homeContainer">
 
   <!-- HERO SECTION -->
   <section class="hero-section white text-white text-center d-flex align-items-center justify-content-center">
@@ -21,42 +21,33 @@
 
 
   <section class="introSection" >
-    <h2>Welcome To Antonio Jefferson Studio</h2>
+    <h2 class="animated-heading">Welcome To The Antonio Jefferson Studio</h2>
     <p>The Antonio Jefferson Studio is a modern sunlit space ideal for photo shoots, interviews, content days, and intimate creative events. Featuring stylish furniture, versatile backdrops, and natural lighting, the studio offers a warm and professional setting to bring your ideas to life. Located in the vibrant DUMBO area, it’s just steps away from top dining spots like Celestine, The River Cafe, Juliana’s, Time Out Market, Dumbo House, and Nobody Told Me, perfect for post shoot meals or client meetups. Easily accessible by multiple train lines and minutes from Manhattan, our studio balances comfort, convenience, and creative potential.</p>
 
     <a href="{{ url_for('studio') }}"><div class="btn">Explore the Studio</div></a>
 
-    <h2 id="whyUs">Why Choose Us?</h2>
+    <h2 class="animated-heading" id="whyUs">What We Bring To The Table (Besides Good Vibes)</h2>
     <p>Antonio Jefferson Studio is more than just a space,  it's a creative environment built for artists, brands, and storytellers. With natural light, professional-grade equipment, and a minimalist aesthetic, the studio is designed to adapt to your vision. Whether you're booking a shoot or renting the space for your own project, you'll find a clean, functional, and inspiring setting that supports quality work. From the curated amenities to the intentional layout, everything here is set up to make your process smoother and your final product stronger.</p>
 
   </section>
 
 
-  <section class="servicesSection" >
-    <div id="splashServices">SERVICES</div>
-
-    <div id="boxes">
-        <div id="boxesRow1">
-          <div class="serviceBox">
-            <div class="serviceTitle">FAST ONLINE BOOKING</div>
-            <div class="serviceDesc">Reserve your studio time in just a few clicks!</div>
-          </div>
-          <div class="serviceBox">
-            <div class="serviceTitle">OPEN COMMUNICATION</div>
-            <div class="serviceDesc">We stay responsive and clear so you're never left guessing.</div>
-          </div>
-        </div>  
-        <div id="boxesRow2"> 
-          <div class="serviceBox">
-            <div class="serviceTitle">DUMBO LOCATION</div>
-            <div class="serviceDesc">Easily accessible and surrounded by creative energy, right where you need to be.</div>
-          </div>
-          <div class="serviceBox">
-            <div class="serviceTitle">CREATOR-FIRST DESIGN</div>
-            <div class="serviceDesc">Everything in the studio is set up to support your workflow, not get in the way.</div>
-          </div>
-        </div>
+  <section id="servicesSection" class="servicesSection">
+    <div id="servicesRow1">
+      <div id="servicesHeader">WHAT <span>we</span><br> OFFER</div>
     </div>
+  
+    <div id="servicesRow2">
+      <div id="servicesBlurb">
+        
+        A thoughtfully designed space made for creators who value 
+        <span class="circle-word">intention</span>. With its open 
+        layout, essential tools, and minimalist energy, it supports 
+        focus, experimentation, and high-quality output.
+
+      </div>
+    </div>
+    <div class="btn" id="servicesBtn">View Services</div>
   </section>
 
 
@@ -64,18 +55,43 @@
       <div id="splashShop">SHOP</div>
       <img id="shopIMG" src="../static/images/shopIMG.png">
 
-      <h2>More Than A Studio</h2>
+      <h2 class="animated-heading">More Than A Studio</h2>
       <p>Antonio Jefferson Studio isn't just a space: it's a creative brand. Alongside the photo studio, we also drop limited-run merch that reflects the same energy that drives the work happening inside these walls. Designed in-house and released in small batches, every piece ties back to the culture, style, and creative mindset that defines the studio. Whether you're pulling up to shoot or repping the brand out in the world, the goal is the same: to build something real, intentional, and rooted in community.</p>
-      
+      <a href="{{ url_for('studio') }}"><div class="btn" style="margin-top: 40px;">Shop</div></a>
+      <div id="glideTrack">
+        <div class="glideBox"></div>
+        <div class="glideBox"></div>
+        <div class="glideBox"></div>
+        <div class="glideBox"></div>
+        <div class="glideBox"></div>
+        <div class="glideBox"></div>
+      </div>
+
   </section>
 
 
   <section class="bookNowSection" >
-      <div id="splashBookNow">BOOK NOW</div>
+      <!-- <div id="splashBookNow">BOOK NOW</div> -->
+      <div id="bookNowWords">
+        <!--<h2 class="animated-heading">Reserve the Space That Works for You</h2>
+        <p>Natural light. Essential gear. Hassle-free booking. Secure your time in our Brooklyn studio today</p> -->
+        <h2 class="animated-heading" id="BN1">So.......</h2>
+        <h2 class="animated-heading" id="BN2">WHAT NOW?</h2>
+        <p>
+          Booking your session at Antonio Jefferson Studio is simple and flexible. 
+          Select your desired time and date by the hour, half day, or full day. 
+          Once you've booked, you'll receive a confirmation email with all essential access details.
+           A dedicated studio manager may be available on site to assist you during check in, 
+           ensuring your experience runs smoothly from start to finish.
+        </p>
+        <div id="BNpop">
+          <h3 id="BNtxt">All you have to do <br>now is book.</h3>
+          <img src="../static/icons/arrowCurved.svg">
+        </div>
 
-      <h2>Reserve the Space That Works for You</h2>
-      <p>Natural light. Essential gear. Hassle-free booking. Secure your time in our Brooklyn studio today</p>
-
+        
+      </div>
+      
       <div id="images">
         <div id="row1">
           <img class="bookNowImg" src="../static/compressedImg/IMG_0208-1edit-min.jpg"/>
@@ -91,16 +107,18 @@
         </div>
       </div>
 
-<div id="animation">
-  <div id="aj-orbit-wrapper">
-    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/IMG_0208-1edit-min.jpg');"></div>
-    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/_53A1217-editfinal-min.jpg');"></div>
-    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/DJI_0880-edit-min.jpg');"></div>
-    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/_53A1288-EDIT-min.jpg');"></div>
-    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/_53A1289-EDIT-min.jpg');"></div>
-    <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/DJI_0816-edit-min.jpg');"></div>
-  </div>
-</div>
+      <div id="animation">
+        <div id="aj-orbit-wrapper">
+          <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/IMG_0208-1edit-min.jpg');"></div>
+          <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/_53A1217-editfinal-min.jpg');"></div>
+          <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/DJI_0880-edit-min.jpg');"></div>
+          <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/_53A1288-EDIT-min.jpg');"></div>
+          <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/_53A1289-EDIT-min.jpg');"></div>
+          <div class="aj-orbit-piece" style="background-image: url('../static/compressedImg/DJI_0816-edit-min.jpg');"></div>
+          <div class="aj-orbit-piece" style="background-image: url('../static/images/DJI_0806-edit.jpg');"></div>
+        </div>
+      </div>
+      <a href="{{ url_for('book') }}"><div class="btn" style="margin-left:auto;margin-top: 40px;">Book Now</div></a>
 
 
   </section>
@@ -118,10 +136,110 @@
 
 <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
 
+
 <script>
+const { scroll, animate } = Motion;
+
 let focusedIndex = null;
 const body = document.body;
 window.addEventListener("DOMContentLoaded", () => {
+const glideBoxes = document.querySelectorAll(".glideBox");
+const numBoxes = glideBoxes.length;
+const degreesBetweenBoxes = 60; // tighter spacing (vs 360 / numBoxes)
+let radiusX, radiusZ;
+
+function updateGlideRadii() {
+  radiusX = window.innerWidth * 0.35;
+  radiusZ = window.innerWidth * 0.15;
+}
+
+window.addEventListener("resize", () => {
+  updateGlideRadii();
+  positionGlideBoxes(); 
+});
+
+updateGlideRadii();
+
+function positionGlideBoxes(rotationOffset = 0) {
+  glideBoxes.forEach((box, index) => {
+    const boxRotationDeg = rotationOffset + index * degreesBetweenBoxes;
+    const boxRotationRad = boxRotationDeg * Math.PI / 180;
+
+    const xPos = Math.sin(boxRotationRad) * radiusX;
+    const zPos = Math.cos(boxRotationRad) * radiusZ;
+
+    box.style.transform = `
+      translateX(${xPos}px)
+      translateZ(${zPos}px)
+      rotateY(${boxRotationDeg}deg)
+    `;
+
+    const boxVisibility = 0.3 + 0.7 * Math.cos(boxRotationRad);
+    box.style.opacity = boxVisibility;
+  });
+}
+
+const shopSection = document.querySelector(".shopSection");
+
+window.addEventListener("scroll", () => {
+  const rect = shopSection.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+
+ const scrollStart = viewportHeight; // when the top just enters from the bottom
+const scrollEnd = -shopSection.offsetHeight; // when the bottom leaves the top
+const totalScroll = scrollStart - scrollEnd;
+
+const scrollProgress = Math.min(Math.max(
+  (rect.top - scrollEnd) / totalScroll,
+  0
+), 1);
+
+  const rotationOffset = scrollProgress * 720;
+  positionGlideBoxes(rotationOffset);
+});
+
+// Initial layout
+positionGlideBoxes(0);
+
+
+
+  // Header: flips back harder, shrinks more, moves up more
+  scroll(
+    animate(document.querySelector("#servicesHeader"), 
+      { 
+        opacity: [1, 0],
+        y: [0, -100],
+        rotateX: [0, -100],
+        scale: [1, 0.85]
+      }, 
+      { easing: "ease-in-out" }
+    ),
+    {
+      target: document.querySelector("#servicesSection"),
+      offset: ["start 90%", "end 80%"]
+    }
+  );
+
+  // Blurb: comes from deeper below, rotates in more, scales bigger
+  scroll(
+    animate(document.querySelector("#servicesBlurb"), 
+      { 
+        opacity: [0, 1],
+        y: [100, 0],
+        rotateX: [100, 0],
+        scale: [0.85, 1.05]
+      }, 
+      { easing: "ease-in-out" }
+    ),
+    {
+      target: document.querySelector("#servicesSection"),
+      offset: ["start 90%", "end 80%"]
+    }
+  );
+
+
+
+
   const panels = document.querySelectorAll(".aj-orbit-piece");
   const wrapper = document.getElementById("aj-orbit-wrapper");
   const animationContainer = document.getElementById("animation");
@@ -132,14 +250,15 @@ window.addEventListener("DOMContentLoaded", () => {
   const centerZ = 0;
 
   const screenW = window.innerWidth;
-  const baseX = screenW * (screenW < 768 ? 0.12 : screenW < 1024 ? 0.08 : 0.05);
+  const baseX = screenW * (screenW < 768 ? 0.10 : screenW < 1024 ? 0.06 : 0.04);
   const positions = [
-    { x: -baseX * 2.5, y: -120, z: 100 },
+    { x: -baseX * 4, y: -120, z: 100 },
     { x: -baseX * 3.5, y: 120, z: 50 },
     { x: -baseX * 1.5, y: -90, z: 0 },
-    { x: baseX * 0.5, y: 100, z: -50 },
+    { x: baseX * 0, y: 100, z: -50 },
     { x: baseX * 1.5, y: -80, z: -100 },
     { x: baseX * 3.5, y: 80, z: 80 },
+    { x: baseX * 5.6, y: -150, z: -70 }
   ];
 
   // Initial placement
@@ -180,8 +299,14 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   function updateRotation() {
-    const rotateX = mouseY * 10;
-    const rotateY = -mouseX * 10;
+    const maxRotation = 10; // degrees
+    let rotateX = mouseY * maxRotation;
+    let rotateY = -mouseX * maxRotation;
+
+    // Clamp values to stay within [-maxRotation, maxRotation]
+    rotateX = Math.max(Math.min(rotateX, maxRotation), -maxRotation);
+    rotateY = Math.max(Math.min(rotateY, maxRotation), -maxRotation);
+
     panels.forEach((el) => {
       const match = el.style.transform.match(/translate3d\([^)]+\)/);
       if (match) {
@@ -231,26 +356,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   loop();
 });
-</script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
 function scaleToFit() {
   const targetWidth = window.innerWidth * 0.8;
   const baseWidth = 1100; // assumed base layout width
@@ -263,7 +369,6 @@ function scaleToFit() {
 
 window.addEventListener("resize", scaleToFit);
 scaleToFit();
-  const { scroll, animate } = Motion
 
   document.querySelectorAll(".bookNowImg").forEach((img, i) => {
     const targetOpacity = 0.9 + 0.1 * (i % 4);
@@ -357,7 +462,62 @@ scaleToFit();
     }
   );
 
+  // 1. Split each heading's text into <span class="char">
+  function wrapLetters(selector) {
+    document.querySelectorAll(selector).forEach(el => {
+      const words = el.textContent.trim().split(" ");
+      el.innerHTML = ""; // clear
+
+      words.forEach((word, wordIndex) => {
+        const wordSpan = document.createElement("span");
+        wordSpan.className = "word";
+        word.split("").forEach(char => {
+          const charSpan = document.createElement("span");
+          charSpan.className = "char";
+          charSpan.textContent = char;
+          wordSpan.appendChild(charSpan);
+        });
+
+        el.appendChild(wordSpan);
+
+        // Add a space after each word except the last
+        if (wordIndex < words.length - 1) {
+          el.appendChild(document.createTextNode(" "));
+        }
+      });
+    });
+  }
+
+
+  // 2. Animate on scroll into view — one-time
+  function animateHeadingsOnce(selector) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const chars = entry.target.querySelectorAll(".char");
+          Motion.animate(
+            chars,
+            { y: 0, opacity: 1 },
+            {
+              delay: i => i * 0.05,
+              duration: .01,
+              easing: "linear"
+            }
+          );
+          obs.unobserve(entry.target); // run once
+        }
+      });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll(selector).forEach(h => observer.observe(h));
+  }
+
+  wrapLetters(".animated-heading");
+  animateHeadingsOnce(".animated-heading");
+
+
 </script>
+
 
 
 {% endblock %}
