@@ -15,3 +15,8 @@ pytest
 pytest-flask
 pytest-cov
 coverage
+stripe
+google-api-python-client
+google-auth
+google-auth-httplib2
+google-auth-oauthlib

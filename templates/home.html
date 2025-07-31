@@ -300,6 +300,7 @@ positionGlideBoxes(0);
 
   function updateRotation() {
     const maxRotation = 10; // degrees
+
     let rotateX = mouseY * maxRotation;
     let rotateY = -mouseX * maxRotation;
 
@@ -307,10 +308,11 @@ positionGlideBoxes(0);
     rotateX = Math.max(Math.min(rotateX, maxRotation), -maxRotation);
     rotateY = Math.max(Math.min(rotateY, maxRotation), -maxRotation);
 
+
     panels.forEach((el) => {
       const match = el.style.transform.match(/translate3d\([^)]+\)/);
       if (match) {
-        el.style.transform = `${match[0]} rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
+        el.style.transform = `${match[0]} rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       }
     });
   }
