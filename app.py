@@ -22,15 +22,15 @@ import base64
 
 load_dotenv()
 
-def write_google_credentials():
-    encoded = os.getenv("GOOGLE_CREDENTIALS_B64")
-    if not encoded:
-        raise RuntimeError("GOOGLE_CREDENTIALS_B64 not set")
+# def write_google_credentials():
+#     encoded = os.getenv("GOOGLE_CREDENTIALS_B64")
+#     if not encoded:
+#         raise RuntimeError("GOOGLE_CREDENTIALS_B64 not set")
     
-    decoded = base64.b64decode(encoded)
-    with open("google_credentials.json", "wb") as f:
-        f.write(decoded)
-    return "google_credentials.json"
+#     decoded = base64.b64decode(encoded)
+#     with open("google_credentials.json", "wb") as f:
+#         f.write(decoded)
+#     return "google_credentials.json"
 
 # Stripe setup
 stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
@@ -38,7 +38,7 @@ DOMAIN = "http://127.0.0.1:5000"
 
 # Google Calendar setup
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-SERVICE_ACCOUNT_FILE = write_google_credentials()
+SERVICE_ACCOUNT_FILE = 'google_credentials.json' #write_google_credentials()
 CALENDAR_ID = 'primary'
 
 load_dotenv()
