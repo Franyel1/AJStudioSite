@@ -693,7 +693,6 @@ p{
 #bookNowContent{
   padding: 5%;
   padding-top:0;
-  overflow: hidden;
 }
 .amList{
   list-style-type: none;
@@ -749,71 +748,96 @@ p{
   display: flex;
   flex-direction: row;
 }
-
-
-.calendly-inline-widget{
-  min-width:1000px; 
-  height:2000px;
-  transform: scale(1);
-  transform-origin: top left;
-}
-
-#bookNowCol2{
- max-width: 50%;
- transform: translateX(-15%);
-}
-
 #bookNowCol1{
+  margin-right: 100px;
+}
+
+#bookNowCol1, #bookNowCol2{
   min-width: 40%;
+
 }
 
+#bookingForm{
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  padding: 23px;
+  display: flex;
+  flex-direction: column;
+}
 
+#bookingForm>input, #bookingForm>select{
+  font-family: Roboto;
+  border: #DEE2E6 1px solid;
+  padding: 8px;
+  margin-bottom: 15px;
+  font-size: 17px;
+  color:#595C5F;
+  border-radius: 6px;
+}
+#datePicker{
+  margin-bottom: 20px;
+}
+#calendariFrame{
+  width:100%;
+  height: 400px;
+  border-radius: 10px;
+}
 
-#calendlyWrapper {
+#flatpickrContainer {
   width: 100%;
-  min-width: 55vw;
-  max-width: 800px;
-  padding: 0;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
-.calendly-inline-widget {
-  width: 100% ;
-  min-width: 55vw ;
-  height: 1800px; /* adjust based on actual widget height */
-  border: none ;
-  padding: 0 ;
-  transform: scale(1);
-  transform-origin: top left;
+#bookingForm>h1{
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+#bookingForm>h2{
+  font-size: 16px;
+  text-align: center;
+}
+#bookingForm hr{
+  width: 90%;
+  align-self: center;
+  border-width: .5px;
+}
+#bookSubmit{
+  font-family: Roboto-Bold;
+  color:white;
+  background-color: rgb(71, 164, 71);
+  border:white 2px solid;
+  padding: 10px;
+  border-radius: 10px;
+  transition-duration: 1s;
+}
+#bookSubmit:hover{
+  background-color: white;
+  color: rgb(71, 164, 71);
+  border:rgb(71, 164, 71) solid 2px;
+
+}
+.flatpickr-calendar {
+  max-width: 400px;         
+  margin: 0 auto;
+  font-size: 16px;
+}
+#bookingSummary{
+  font-size: 20px;
+  font-family: Roboto-bold;
+}
+
+.total{
+  font-family: Roboto-bold;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+#total{
+  color: rgb(71, 164, 71);
 }
 
 
-.crop-left {
-  clip-path: inset(0 0 0 70px);
-}
-
-@media (min-width: 1450px) {
-  
-  #calendlyWrapper {
-    width: 100%;
-    min-width: 55vw;
-    max-width: 800px;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  .calendly-inline-widget {
-    width: 100% ;
-    min-width: 55vw ;
-    height: 1800px; /* adjust based on actual widget height */
-    border: none ;
-    padding: 0 ;
-    transform: scale(.9);
-    transform-origin: top right;
-  }
-
-
-}
 
 @media (max-width: 768px) {
   #bookNowContent {
@@ -826,38 +850,7 @@ p{
   #bookNowCol2 {
     width: 100%;
   }
-  #calendlyWrapper {
-    margin-top: 100px;
-    margin-left: 10%;
-
-    transform: scale(.9);
-  }
-  #bookNowSlide, #bookNowSlide .carousel-item img{
-    height: 50vh;
-  }
-
-  #calendlyWrapper {
-    width: 100%;
-    min-width: 100vw;
-    margin-top: -90px;
-    margin-left: auto;
-  }
-
-  .calendly-inline-widget {
-    width: 100% ;
-    min-width: 100vw;
-    height: 2000px;
-    transform-origin: top left;
-    margin: 0;
-  }
-  .crop-right {
-    clip-path: none;
-  }
-
-  .crop-left {
-    clip-path: none;
-  }
-
+  
   #bookNowContent p, .amList, #detList{
     font-family: Roboto-light;
     font-size: 12px;
@@ -882,27 +875,6 @@ p{
   }
   #bookNowContent p, .amList, #detList{
     font-size: 14px;
-  }
-  #calendlyWrapper {
-    width: 100%;
-    min-width: 100vw;
-    margin-top: -70px;
-
-  }
-
-  .calendly-inline-widget {
-    width: 100% ;
-    min-width: 100vw;
-    height: 1800px;
-    transform-origin: top left;
-    margin: 0;
-  }
-  .crop-right {
-    clip-path: none;
-  }
-
-  .crop-left {
-    clip-path: none;
   }
 
 
@@ -1314,6 +1286,55 @@ li{
   }
 }
 
+.success-box {
+    max-width: 600px;
+    margin: 50px auto;
+    margin-top: 90px;
+    padding: 25px 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-family: "Inter", Arial, sans-serif;
+    color: #333;
+}
 
+.success-box .success-header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
 
+.success-box .success-header p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.details {
+    text-align: left;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fafafa;
+    margin-bottom: 20px;
+}
+
+.details h3 {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.details-grid p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+#paid {
+    font-weight: bold;
+}
 
