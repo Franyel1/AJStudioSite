@@ -101,19 +101,240 @@
 
   </div>
   <div id="bookNowCol2">
-    <div style="width:100%; max-width:800px;" id="calendlyWrapper" class="crop-left crop-right">
+    <!-- <div style="width:100%; max-width:800px;" id="calendlyWrapper" class="crop-left crop-right">
       <div data-url="https://calendly.com/antoniojefferson-info?hide_landing_page_details=1&amp;hide_gdpr_banner=1&amp;primary_color=000000" class="calendly-inline-widget"></div>
-    </div>
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+      </div>
+      <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script> -->
+  
+
+    <!-- Booking Form -->
+    <form action="{{ url_for('create_checkout_session') }}" method="POST" id="bookingForm">
+      <h1>Current Studio Schedule:</h1>
+      <iframe id="calendariFrame" src="https://calendar.google.com/calendar/embed?&wkst=1&ctz=America%2FNew_York&mode=WEEK&showPrint=0&title=test&showCalendars=0&showTitle=0&src=OWUyNzkyNTc2Y2FhMWYzZTE4ZDEwMDYwYTA5MzM1ZWM1Zjg5YzdlODVkZDMxZmZlMzJhMzEwZDk4Y2Y3NmM2M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233f51b5" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+      
+      <hr>
+      <h2>YOUR DATE</h2>
+      <div class="flatpickr" id="datePicker">
+        <input type="text" name="date" placeholder="Select a Date.." data-input required>
+        
+        <a class="input-button" title="toggle" data-toggle>
+          <i class="icon-calendar"></i>
+        </a>
+
+        <a class="input-button" title="clear" data-clear>
+          <i class="icon-close"></i>
+        </a>
+      </div>
+
+      <label for="start_time">Start Time:</label>
+      <select id="start_time" name="start_time" required>
+        {% for hour in range(8, 24) %}
+          {% set ampm = "AM" if hour < 12 else "PM" %}
+          {% set display_hour = hour if hour <= 12 else hour - 12 %}
+          <option value="{{'%02d:00' % hour}}">{{ display_hour }}:00 {{ ampm }}</option>
+          <option value="{{'%02d:30' % hour}}">{{ display_hour }}:30 {{ ampm }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="end_time">End Time:</label>
+      <select id="end_time" name="end_time" required>
+        {% for hour in range(8, 24) %}
+          {% set ampm = "AM" if hour < 12 else "PM" %}
+          {% set display_hour = hour if hour <= 12 else hour - 12 %}
+          <option value="{{'%02d:00' % hour}}">{{ display_hour }}:00 {{ ampm }}</option>
+          <option value="{{'%02d:30' % hour}}">{{ display_hour }}:30 {{ ampm }}</option>
+        {% endfor %}
+      </select>
+
+      <hr>
+      <h2>ADD-ONS</h2>
+      <label for="tables">Folding Tables ($5 each):</label>
+      <input type="number" id="tables" name="tables" value="0" min="0" max="5">
+
+      <label for="chairs">Folding Chairs ($2 each):</label>
+      <input type="number" id="chairs" name="chairs" value="0" min="0" max="30">
+
+      <hr>
+      <h2>YOUR DETAILS</h2>
+      <label for="name">Full Name <span style="color: gray;">(required)</span></label>
+      <input type="text" name="name" required>
+
+      <label for="email">Email <span style="color: gray;">(required)</span></label>
+      <input type="email" name="email" required>
+
+      <label for="phone">Phone <span style="color: gray;">(required)</span></label>
+      <input type="tel" name="phone" required>
+
+      <p id="bookingSummary" style="font-family: roboto-bold;font-size: 16px;">
+        Booking: Select a date and time.
+      </p>
+
+      <div class="total">Total Cost: <span id="total">0</span></div>
+      <button id="bookSubmit" type="submit">BOOK NOW</button>
+    </form>
+
+
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  flatpickr("#datePicker", {
+    wrap: true,
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    disableMobile: true,
+    altInput: true,
+    altFormat: "F j, Y"
+  });
+
+  const baseRate = 39;
+  const tablesEl = document.getElementById('tables');
+  const chairsEl = document.getElementById('chairs');
+  const totalEl = document.getElementById('total');
+  const startTimeSelect = document.getElementById('start_time');
+  const endTimeSelect = document.getElementById('end_time');
+  const datePickerInput = document.querySelector("#datePicker input[name='date']");
+  const bookingSummaryEl = document.getElementById('bookingSummary');
+  let freeSlots = [];
+
+  function format12Hour(time24) {
+    let [hour, minute] = time24.split(':').map(Number);
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    hour = hour % 12 || 12;
+    return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
+  }
+
+  function timeToMinutes(timeStr) {
+    const [h, m] = timeStr.split(':').map(Number);
+    return h * 60 + m;
+  }
+
+  function calculateDuration() {
+    const start = startTimeSelect.value;
+    const end = endTimeSelect.value;
+    if (!start || !end) return 0;
+    const diff = timeToMinutes(end) - timeToMinutes(start);
+    return diff > 0 ? diff / 60 : 0;
+  }
+
+  // Fetch available slots from backend
+  async function fetchAvailableSlots() {
+    const date = datePickerInput.value;
+    if (!date) return;
+    const res = await fetch(`/available-times?date=${date}`);
+    freeSlots = await res.json();  // Expect array like ["09:00", "09:30", ...]
+    updateStartTimeOptions();
+  }
+
+  function updateStartTimeOptions() {
+      startTimeSelect.innerHTML = '';
+      freeSlots.forEach(slot => {
+        const opt = document.createElement('option');
+        opt.value = slot;
+        opt.textContent = format12Hour(slot);
+        startTimeSelect.appendChild(opt);
+      });
+      updateEndTimeOptions();
+    }
+
+    
+  function updateEndTimeOptions() {
+    const selectedStart = startTimeSelect.value;
+    if (!selectedStart) return;
+
+    const startMinutes = timeToMinutes(selectedStart);
+    const slotSet = new Set(freeSlots);
+
+    const validEndTimes = [];
+
+    // Build every possible end time (from 1hr after start to midnight)
+    for (let t = startMinutes + 60; t <= 1440; t += 30) {
+      let isValid = true;
+      for (let m = startMinutes; m < t; m += 30) {
+        const h = Math.floor(m / 60);
+        const mi = m % 60;
+        const slotStr = `${String(h).padStart(2, '0')}:${String(mi).padStart(2, '0')}`;
+        if (!slotSet.has(slotStr)) {
+          isValid = false;
+          break;
+        }
+      }
+
+      if (isValid) {
+        const h = Math.floor(t / 60) % 24;
+        const m = t % 60;
+        const endSlotStr = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+        validEndTimes.push(endSlotStr);
+      }
+    }
+
+    // Populate dropdown
+    endTimeSelect.innerHTML = '';
+    validEndTimes.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t;
+      opt.textContent = format12Hour(t);
+      endTimeSelect.appendChild(opt);
+    });
+
+    endTimeSelect.value = '';
+  }
+
+
+
+  function updateTotal() {
+    const duration = calculateDuration();
+    const tables = parseInt(tablesEl.value) || 0;
+    const chairs = parseInt(chairsEl.value) || 0;
+    const total = (duration * baseRate) + (tables * 5) + (chairs * 2);
+    totalEl.textContent = '$' + total.toFixed(2);
+    updateBookingSummary();
+  }
+
+  function updateBookingSummary() {
+    const date = datePickerInput.value;
+    const start = startTimeSelect.value;
+    const end = endTimeSelect.value;
+    if (date && start && end && calculateDuration() > 0) {
+      const prettyDate = new Date(`${date}T${start}`).toLocaleDateString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric'
+      });
+      bookingSummaryEl.textContent = `Booking from ${format12Hour(start)} to ${format12Hour(end)} on ${prettyDate}`;
+    } else {
+      bookingSummaryEl.textContent = "Booking: Select a date and time.";
+    }
+  }
+
+  function resetOnDateChange() {
+    startTimeSelect.innerHTML = '';
+    endTimeSelect.innerHTML = '';
+    tablesEl.value = 0;
+    chairsEl.value = 0;
+    updateTotal();
+    fetchAvailableSlots();
+  }
+
+  startTimeSelect.addEventListener('input', () => {
+    updateEndTimeOptions();
+    updateTotal();
+  });
+
+  endTimeSelect.addEventListener('input', updateTotal);
+  [tablesEl, chairsEl].forEach(el => el.addEventListener('input', updateTotal));
+  datePickerInput.addEventListener('change', resetOnDateChange);
+
+  updateTotal();
+</script>
+
+
+
 <script>
   function scaleBookNowContent() {
-  const content = document.getElementById('bookNowContent');
-  const vw = Math.min(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-}
-
+    const content = document.getElementById('bookNowContent');
+    const vw = Math.min(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    // (Placeholder: Add scaling logic if needed)
+  }
 
   window.addEventListener('resize', scaleBookNowContent);
   scaleBookNowContent();
