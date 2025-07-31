@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}AJS - Booking Confirmation{% endblock %}
+
+{% block content %}
+
+<div class="success-box">
+<div class="success-header">
+    <h1>🎉 Booking Confirmed! 🎉</h1>
+    <p>Your reservation is confirmed! A confirmation email with all the details has been sent. Thank you for choosing us.</p>
+</div>
+
+<div class="details">
+    <h3>Booking Details</h3>
+    <div class="details-grid">
+        <p><strong>Booking Date:</strong> {{ booking.pretty_date }}</p>
+        <p><strong>Time:</strong> {{ booking.start_time_display }} - {{ booking.end_time_display }}</p>
+        <p><strong>Duration:</strong> {{ booking.duration }} hour(s)</p>
+        {% if booking.tables > 0 %}
+        <p><strong>Folding Tables Rented:</strong> {{ booking.tables }}</p>
+        {% endif %}
+        {% if booking.chairs > 0 %}
+        <p><strong>Folding Chairs Rented:</strong> {{ booking.chairs }}</p>
+        {% endif %}
+        <p id="paid"><strong>Total:</strong> ${{ booking.total }}</p>
+    </div>
+</div>
+
+<a href="/" class="btn">Go Back Home</a>
+</div>
+
+{% endblock %}
