@@ -1386,7 +1386,7 @@ li{
   background-color: #2e2323; /* Replace with image/bg later */
   border-radius: 5px;
   will-change: transform, opacity;
-
+}
 .success-box {
     max-width: 600px;
     margin: 50px auto;
