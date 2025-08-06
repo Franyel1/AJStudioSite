@@ -381,7 +381,7 @@ video::-webkit-media-controls {
   border: 2px solid black;
 }
 
-.introSection, .servicesSection, .shopSection,.bookNowSection, #questions{
+ .introSection,.servicesSection, .shopSection,.bookNowSection, #questions{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -393,14 +393,23 @@ video::-webkit-media-controls {
   text-align: center;
 
 }
+.introSection{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.introSection p{
+  padding-left: 5%;
+  padding-right: 5%;
+}
  .servicesSection, .shopSection, .bookNowSection{
   margin-top: 15vw;
 }
 .animated-heading{
   margin-top: 3vw;
   margin-bottom: 3vw;
-  font-size: 50px;
-  overflow-wrap: break-word;
+  font-size: 25px;
+  line-height: 45px;
+  font-family: Onder;
 }
 .introSection div{
   margin-top: 3vw;
@@ -409,7 +418,14 @@ video::-webkit-media-controls {
 
 
  #whyUs{
-  margin-top: 6vw;
+  margin-top: 12vw;
+  font-size: 180px;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  margin-bottom: 40px;
+  font-family: Roboto-Bold;
+  
  }
 h2{
   font-weight: 600;
@@ -418,6 +434,14 @@ h2{
 }
 #homeContainer p{
   font-size: 22px;
+  text-justify: inter-word;
+  text-align: justify;
+  text-align-last: center; 
+}
+
+.introSection h2:nth-child(1){
+  font-family: serif;
+  font-size: 80px;
 }
 p{
   font-size: 20px;
@@ -439,7 +463,7 @@ p{
 }
 
 
-#splashServices, #splashShop, #splashBookNow{
+#splashShop{
   position: absolute;
   font-family: Onder;
   font-size: 5vw;
@@ -1327,19 +1351,31 @@ li{
   transform-style: preserve-3d;
   perspective: 1000px;
   transform-origin: center;
-  margin-bottom: 5vw;
+  margin-bottom: 0vw;
 }
 
 #servicesHeader{
-  font-family:  Roboto;
-  font-size: light;
-  font-size: 8vw;
-  line-height: 7.3vw;
+  font-family: serif;
+  font-size: 14vw;
+  line-height: 12.2vw;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
 
 }
-#servicesHeader span{
-  font-family: Diphy;
-  font-size: 10vw;
+#servicesHeader div{
+  align-self: baseline;
+  text-align: left;
+}
+
+#servicesHeader div:nth-child(1){
+  margin-left: -13vw;
+}
+#servicesHeader div:nth-child(2){
+  margin-left: 0vw;
+}
+#servicesHeader div:nth-child(3){
+  margin-left: 0vw;
 }
 
 #servicesBlurb {
@@ -1350,7 +1386,7 @@ li{
   transform: translateY(30px) rotateX(15deg) scale(0.95);
   max-width: 70%;
   margin: auto;
-  font-weight: 500;
+  text-align: center;
 }
 
 .servicesSection {
@@ -1367,26 +1403,6 @@ li{
 }
 
 
-#glideTrack {
-  perspective: 2000px;
-  transform-style: preserve-3d;
-  position: relative;
-  height: 100px; /* Adjust based on your aesthetic */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-  margin-top: 15vw;
-}
-
-.glideBox {
-  position: absolute;
-  width: 17vw;     /* Fits 4 in 80vw */
-  height: 17vw;
-  background-color: #2e2323; /* Replace with image/bg later */
-  border-radius: 5px;
-  will-change: transform, opacity;
-}
 .success-box {
     max-width: 600px;
     margin: 50px auto;
@@ -1441,24 +1457,6 @@ li{
 }
 
 
-.glideBox:nth-child(1) {
-  background-color: #FF6B6B; /* Red */
-}
-.glideBox:nth-child(2) {
-  background-color: #FFD93D; /* Yellow */
-}
-.glideBox:nth-child(3) {
-  background-color: #6BCB77; /* Green */
-}
-.glideBox:nth-child(4) {
-  background-color: #4D96FF; /* Blue */
-}
-.glideBox:nth-child(5) {
-  background-color: #9D4EDD; /* Purple */
-}
-.glideBox:nth-child(6) {
-  background-color: #F38BA0; /* Pink */
-}
 
 #servicesBtn{
   margin-top: 60px;
@@ -1482,8 +1480,8 @@ li{
 }
 
 #BN1{
-  font-size: 120px;
-  margin-bottom: -50px;
+  font-size: 70px;
+  margin-bottom: 10px;
 }
 #BN2{
   font-size: 100px;
@@ -1514,10 +1512,109 @@ li{
   font-family: Corinthia;
 }
 
+#popAnimation {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 8vw;
+  margin-top: 12vw;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.paper {
+  background-image: url('../static/images/paper.png');
+  position: relative;
+  width: 20vw;
+  height: 25vw;
+  border-radius: 4px;
+
+  transform: rotate(var(--rotate, 0deg));
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+
+}
+
+
+.clip {
+  position: absolute;
+  top: -1.2vw;
+  width: 2.8vw;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.paper:nth-child(1) .clip {
+  left: 30%;
+  transform: translateX(-30%);
+}
+
+.paper:nth-child(2) .clip {
+  left: 50%;
+  transform: translateX(-50%);
+  transform: scaleX(-1);
+}
+
+.paper:nth-child(3) .clip {
+  left: 65%;
+  transform: translateX(-65%);
+}
+
+.tape {
+  position: absolute;
+  top: -2.5vw;
+  width: 12vw;
+  z-index: 2;
+  pointer-events: none;
+  opacity: .7;
+}
+
+.paper:nth-child(1) .tape {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 11vw;
+}
+
+.paper:nth-child(2) .tape {
+  left: 25%;
+  transform: translateX(-25%);
+  transform: scaleX(-1);
+  width: 10vw;
+}
+
+.paper:nth-child(3) .tape {
+  left: 45%;
+  transform: translateX(-45%);
+  width: 11vw;
+}
+
+.paper:nth-child(1) { --rotate: -5deg; }
+.paper:nth-child(2) { --rotate: 0deg; margin-top: -20px;}
+.paper:nth-child(3) { --rotate: 5deg; }
+
+.merch {
+  width: 17vw;
+  height: 18vw;
+  opacity: 0;
+  transition: all 0s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+
 @media (max-width: 1200px) {
   #BN1{
-    font-size: 13vw;
-    margin-bottom: -10px;
+    font-size: 5vw;
+    margin-bottom: 10px;
   }
   #BN2{
     font-size: 10vw;
@@ -1533,14 +1630,25 @@ li{
 }
 
 @media (max-width: 700px) {
+  .paper {
+    width: 25vw;
+    height: 35vw;
+  }
+  .merch {
+    width: 23vw;
+    height: 33vw;
+  }
+  
+  #popAnimation {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    gap: 3vw;
+  }
   #servicesHeader{
-    font-size: 15vw;
+    font-size: 6vw;
     line-height: 18.3vw;
     margin-bottom: -50px;
     margin-top: 50px;
-  }
-  #servicesHeader span{
-    font-size: 16vw;
   }
   #servicesBlurb {
     font-size: 5vw;
@@ -1549,7 +1657,7 @@ li{
     max-width: 100%;
   }
   .animated-heading{
-    font-size: 30px;
+    font-size: 20px;
     overflow-wrap: break-word;
   }
   #homeContainer p{
@@ -1563,7 +1671,7 @@ li{
     margin-top: 30px;
   }
   #BN1{
-    font-size: 15vw;
+    font-size: 5vw;
     margin-bottom: -10px;
   }
   #BN2{
@@ -1574,4 +1682,9 @@ li{
     font-size: 7vw;
     line-height: 6vw;
   }
+}
+.fade-left,
+.fade-top {
+  opacity: 0;
+  transform: translateY(0); /* fallback */
 }
