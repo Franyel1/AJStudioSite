@@ -21,20 +21,29 @@
 
 
   <section class="introSection" >
-    <h2 class="animated-heading">Welcome To The Antonio Jefferson Studio</h2>
+    <h2 class="fade-left"><span>Welcome to </span><i><b>the studio!</b></i></h2>
     <p>The Antonio Jefferson Studio is a modern sunlit space ideal for photo shoots, interviews, content days, and intimate creative events. Featuring stylish furniture, versatile backdrops, and natural lighting, the studio offers a warm and professional setting to bring your ideas to life. Located in the vibrant DUMBO area, it’s just steps away from top dining spots like Celestine, The River Cafe, Juliana’s, Time Out Market, Dumbo House, and Nobody Told Me, perfect for post shoot meals or client meetups. Easily accessible by multiple train lines and minutes from Manhattan, our studio balances comfort, convenience, and creative potential.</p>
 
     <a href="{{ url_for('studio') }}"><div class="btn">Explore the Studio</div></a>
 
-    <h2 class="animated-heading" id="whyUs">What We Bring To The Table (Besides Good Vibes)</h2>
-    <p>Antonio Jefferson Studio is more than just a space,  it's a creative environment built for artists, brands, and storytellers. With natural light, professional-grade equipment, and a minimalist aesthetic, the studio is designed to adapt to your vision. Whether you're booking a shoot or renting the space for your own project, you'll find a clean, functional, and inspiring setting that supports quality work. From the curated amenities to the intentional layout, everything here is set up to make your process smoother and your final product stronger.</p>
+    <h2 class="fade-top" id="whyUs">Why Choose Us?</h2>
+    <p>
+      <b style="font-family: roboto-bold;">Antonio Jefferson Studio is more than just a space,  it's a creative environment built for artists, brands, and storytellers.</b><br>
+      With natural light, professional-grade equipment, and a minimalist aesthetic, the studio is designed to adapt to your vision. 
+      Whether you're booking a shoot or renting the space for your own project, you'll find a clean, functional, and inspiring setting that supports quality work. 
+      From the curated amenities to the intentional layout, everything here is set up to make your process smoother and your final product stronger.
+    </p>
 
   </section>
 
 
   <section id="servicesSection" class="servicesSection">
     <div id="servicesRow1">
-      <div id="servicesHeader">WHAT <span>we</span><br> OFFER</div>
+      <div id="servicesHeader">
+        <i><div>WHAT</div>
+        <div>WE</div>
+        <div>OFFER?</div></i>
+      </div>
     </div>
   
     <div id="servicesRow2">
@@ -43,7 +52,7 @@
         A thoughtfully designed space made for creators who value 
         <span class="circle-word">intention</span>. With its open 
         layout, essential tools, and minimalist energy, it supports 
-        focus, experimentation, and high-quality output.
+        focus, and high-quality output.
 
       </div>
     </div>
@@ -58,14 +67,24 @@
       <h2 class="animated-heading">More Than A Studio</h2>
       <p>Antonio Jefferson Studio isn't just a space: it's a creative brand. Alongside the photo studio, we also drop limited-run merch that reflects the same energy that drives the work happening inside these walls. Designed in-house and released in small batches, every piece ties back to the culture, style, and creative mindset that defines the studio. Whether you're pulling up to shoot or repping the brand out in the world, the goal is the same: to build something real, intentional, and rooted in community.</p>
       <a href="{{ url_for('studio') }}"><div class="btn" style="margin-top: 40px;">Shop</div></a>
-      <div id="glideTrack">
-        <div class="glideBox"></div>
-        <div class="glideBox"></div>
-        <div class="glideBox"></div>
-        <div class="glideBox"></div>
-        <div class="glideBox"></div>
-        <div class="glideBox"></div>
+      
+      <div id="popAnimation">
+        <div class="paper">
+          <img class="tape" src="../static/images/tape.png" />
+          <img src="../static/images/merchPlaceholder.png" class="merch">
+        </div>
+        <div class="paper">
+          <img class="tape" src="../static/images/tape.png" />
+          <img src="../static/images/merchPlaceholder.png" class="merch">
+        </div>
+        <div class="paper">
+          <img class="tape" src="../static/images/tape.png" />
+          <img src="../static/images/merchPlaceholder.png" class="merch">
+        </div>
       </div>
+
+    </div>
+
 
   </section>
 
@@ -142,64 +161,61 @@ const { scroll, animate } = Motion;
 
 let focusedIndex = null;
 const body = document.body;
+
 window.addEventListener("DOMContentLoaded", () => {
-const glideBoxes = document.querySelectorAll(".glideBox");
-const numBoxes = glideBoxes.length;
-const degreesBetweenBoxes = 60; // tighter spacing (vs 360 / numBoxes)
-let radiusX, radiusZ;
-
-function updateGlideRadii() {
-  radiusX = window.innerWidth * 0.35;
-  radiusZ = window.innerWidth * 0.15;
-}
-
-window.addEventListener("resize", () => {
-  updateGlideRadii();
-  positionGlideBoxes(); 
+document.querySelectorAll(".fade-left").forEach((el) => {
+  scroll(
+    animate(el, {
+      opacity: [0, 1],
+      x: [-300, 0],
+      scale: [0.6, 1]
+    }, {
+      duration: 0.6,
+      easing: "ease-out"
+    }),
+    {
+      target: el,
+      offset: ["start 90%", "end 70%"]
+    }
+  );
+});
+document.querySelectorAll(".fade-top").forEach((el) => {
+scroll(
+  animate(document.querySelector(".fade-top"), {
+    opacity: [0, 1],
+    y: [-200, 0],
+    scale: [0.5, 1]
+  }, {
+    duration: 0.6,
+    easing: "ease-out"
+  }),
+  {
+    target: document.querySelector(".fade-top"),
+    offset: ["start 90%", "end 70%"]
+  }
+);
 });
 
-updateGlideRadii();
 
-function positionGlideBoxes(rotationOffset = 0) {
-  glideBoxes.forEach((box, index) => {
-    const boxRotationDeg = rotationOffset + index * degreesBetweenBoxes;
-    const boxRotationRad = boxRotationDeg * Math.PI / 180;
 
-    const xPos = Math.sin(boxRotationRad) * radiusX;
-    const zPos = Math.cos(boxRotationRad) * radiusZ;
+  const merchObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const merchEls = entry.target.querySelectorAll('.merch');
+      if (entry.isIntersecting) {
+        merchEls.forEach((el, i) => {
+          setTimeout(() => {
+            el.style.opacity = "1";
+          }, 1000 * i);
+        });
+      } else {
+        merchEls.forEach(el => {
+          el.style.opacity = "0";
+        });
+      }
+    });
+  }, { threshold: 0 }); // fire when ~50% visible
 
-    box.style.transform = `
-      translateX(${xPos}px)
-      translateZ(${zPos}px)
-      rotateY(${boxRotationDeg}deg)
-    `;
-
-    const boxVisibility = 0.3 + 0.7 * Math.cos(boxRotationRad);
-    box.style.opacity = boxVisibility;
-  });
-}
-
-const shopSection = document.querySelector(".shopSection");
-
-window.addEventListener("scroll", () => {
-  const rect = shopSection.getBoundingClientRect();
-  const viewportHeight = window.innerHeight;
-
- const scrollStart = viewportHeight; // when the top just enters from the bottom
-const scrollEnd = -shopSection.offsetHeight; // when the bottom leaves the top
-const totalScroll = scrollStart - scrollEnd;
-
-const scrollProgress = Math.min(Math.max(
-  (rect.top - scrollEnd) / totalScroll,
-  0
-), 1);
-
-  const rotationOffset = scrollProgress * 720;
-  positionGlideBoxes(rotationOffset);
-});
-
-// Initial layout
-positionGlideBoxes(0);
+  merchObserver.observe(document.getElementById("popAnimation"));
 
 
 
@@ -208,15 +224,15 @@ positionGlideBoxes(0);
     animate(document.querySelector("#servicesHeader"), 
       { 
         opacity: [1, 0],
-        y: [0, -100],
-        rotateX: [0, -100],
+        y: [0, -20],
+        rotateX: [0, -70],
         scale: [1, 0.85]
       }, 
       { easing: "ease-in-out" }
     ),
     {
       target: document.querySelector("#servicesSection"),
-      offset: ["start 90%", "end 80%"]
+      offset: ["start 80%", "end 60%"]
     }
   );
 
@@ -233,7 +249,7 @@ positionGlideBoxes(0);
     ),
     {
       target: document.querySelector("#servicesSection"),
-      offset: ["start 90%", "end 80%"]
+      offset: ["start 80%", "end 60%"]
     }
   );
 
@@ -305,8 +321,8 @@ positionGlideBoxes(0);
     let rotateY = -mouseX * maxRotation;
 
     // Clamp values to stay within [-maxRotation, maxRotation]
-    rotateX = Math.max(Math.min(rotateX, maxRotation), -maxRotation);
-    rotateY = Math.max(Math.min(rotateY, maxRotation), -maxRotation);
+    rotateX = -Math.max(Math.min(rotateX, maxRotation), -maxRotation);
+    rotateY = -Math.max(Math.min(rotateY, maxRotation), -maxRotation);
 
 
     panels.forEach((el) => {
