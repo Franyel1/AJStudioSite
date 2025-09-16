@@ -21,14 +21,14 @@
 
 
   <section class="introSection" >
-    <h2 class="fade-left"><span>Welcome to </span><i><b>the studio!</b></i></h2>
+    <h2 class="animated-heading"><span>Welcome to </span><i><b>the studio!</b></i></h2>
     <p>The Antonio Jefferson Studio is a modern sunlit space ideal for photo shoots, interviews, content days, and intimate creative events. Featuring stylish furniture, versatile backdrops, and natural lighting, the studio offers a warm and professional setting to bring your ideas to life. Located in the vibrant DUMBO area, it’s just steps away from top dining spots like Celestine, The River Cafe, Juliana’s, Time Out Market, Dumbo House, and Nobody Told Me, perfect for post shoot meals or client meetups. Easily accessible by multiple train lines and minutes from Manhattan, our studio balances comfort, convenience, and creative potential.</p>
 
     <a href="{{ url_for('studio') }}"><div class="btn">Explore the Studio</div></a>
 
     <h2 class="fade-top" id="whyUs">Why Choose Us?</h2>
     <p>
-      <b style="font-family: roboto-bold;">Antonio Jefferson Studio is more than just a space,  it's a creative environment built for artists, brands, and storytellers.</b><br>
+      Antonio Jefferson Studio is more than just a space,  it's a creative environment built for artists, brands, and storytellers.
       With natural light, professional-grade equipment, and a minimalist aesthetic, the studio is designed to adapt to your vision. 
       Whether you're booking a shoot or renting the space for your own project, you'll find a clean, functional, and inspiring setting that supports quality work. 
       From the curated amenities to the intentional layout, everything here is set up to make your process smoother and your final product stronger.
@@ -68,7 +68,7 @@
       <p>Antonio Jefferson Studio isn't just a space: it's a creative brand. Alongside the photo studio, we also drop limited-run merch that reflects the same energy that drives the work happening inside these walls. Designed in-house and released in small batches, every piece ties back to the culture, style, and creative mindset that defines the studio. Whether you're pulling up to shoot or repping the brand out in the world, the goal is the same: to build something real, intentional, and rooted in community.</p>
       <a href="{{ url_for('studio') }}"><div class="btn" style="margin-top: 40px;">Shop</div></a>
       
-      <div id="popAnimation">
+     <div id="popAnimation">
         <div class="paper">
           <img class="tape" src="../static/images/tape.png" />
           <img src="../static/images/merchPlaceholder.png" class="merch">
@@ -82,6 +82,33 @@
           <img src="../static/images/merchPlaceholder.png" class="merch">
         </div>
       </div>
+
+  <div id="glideTrack">
+  <div class="glideBox">
+    <img loading="lazy" alt="Neon streetwear portrait"
+      src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1200&auto=format&fit=crop" />
+  </div>
+  <div class="glideBox">
+    <img loading="lazy" alt="Runway silhouette with bold color"
+      src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop" />
+  </div>
+  <div class="glideBox">
+    <img loading="lazy" alt="Avant garde editorial pose"
+      src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" />
+  </div>
+  <div class="glideBox">
+    <img loading="lazy" alt="High contrast studio fashion"
+      src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1200&auto=format&fit=crop" />
+  </div>
+  <div class="glideBox">
+    <img loading="lazy" alt="Color pop accessories closeup"
+      src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop" />
+  </div>
+  <div class="glideBox">
+    <img loading="lazy" alt="Editorial studio with vibrant gels"
+      src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop" />
+  </div>
+</div>
 
     </div>
 
@@ -163,39 +190,98 @@ let focusedIndex = null;
 const body = document.body;
 
 window.addEventListener("DOMContentLoaded", () => {
-document.querySelectorAll(".fade-left").forEach((el) => {
+
+
+  const glideBoxes = document.querySelectorAll(".glideBox");
+const numBoxes = glideBoxes.length;
+const degreesBetweenBoxes = 60; // tighter spacing (vs 360 / numBoxes)
+let radiusX, radiusZ;
+
+function updateGlideRadii() {
+  radiusX = window.innerWidth * 0.35;
+  radiusZ = window.innerWidth * 0.15;
+}
+
+window.addEventListener("resize", () => {
+  updateGlideRadii();
+  positionGlideBoxes(); 
+});
+
+updateGlideRadii();
+
+function positionGlideBoxes(rotationOffset = 0) {
+    glideBoxes.forEach((box, index) => {
+      const boxRotationDeg = rotationOffset + index * degreesBetweenBoxes;
+      const boxRotationRad = boxRotationDeg * Math.PI / 180;
+
+      const xPos = Math.sin(boxRotationRad) * radiusX;
+      const zPos = Math.cos(boxRotationRad) * radiusZ;
+
+      box.style.transform = `
+        translateX(${xPos}px)
+        translateZ(${zPos}px)
+        rotateY(${boxRotationDeg}deg)
+      `;
+
+      const boxVisibility = 0.3 + 0.7 * Math.cos(boxRotationRad);
+      box.style.opacity = boxVisibility;
+    });
+  }
+
+  const shopSection = document.querySelector(".shopSection");
+
+  window.addEventListener("scroll", () => {
+    const rect = shopSection.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+  const scrollStart = viewportHeight; // when the top just enters from the bottom
+  const scrollEnd = -shopSection.offsetHeight; // when the bottom leaves the top
+  const totalScroll = scrollStart - scrollEnd;
+
+  const scrollProgress = Math.min(Math.max(
+    (rect.top - scrollEnd) / totalScroll,
+    0
+  ), 1);
+
+    const rotationOffset = scrollProgress * 720;
+    positionGlideBoxes(rotationOffset);
+  });
+
+  // Initial layout
+  positionGlideBoxes(0);
+
+  document.querySelectorAll(".fade-left").forEach((el) => {
+    scroll(
+      animate(el, {
+        opacity: [0, 1],
+        x: [-300, 0],
+        scale: [0.6, 1]
+      }, {
+        duration: 0.6,
+        easing: "ease-out"
+      }),
+      {
+        target: el,
+        offset: ["start 90%", "end 70%"]
+      }
+    );
+  });
+  document.querySelectorAll(".fade-top").forEach((el) => {
   scroll(
-    animate(el, {
+    animate(document.querySelector(".fade-top"), {
       opacity: [0, 1],
-      x: [-300, 0],
-      scale: [0.6, 1]
+      y: [-200, 0],
+      scale: [0.5, 1]
     }, {
       duration: 0.6,
       easing: "ease-out"
     }),
     {
-      target: el,
+      target: document.querySelector(".fade-top"),
       offset: ["start 90%", "end 70%"]
     }
   );
-});
-document.querySelectorAll(".fade-top").forEach((el) => {
-scroll(
-  animate(document.querySelector(".fade-top"), {
-    opacity: [0, 1],
-    y: [-200, 0],
-    scale: [0.5, 1]
-  }, {
-    duration: 0.6,
-    easing: "ease-out"
-  }),
-  {
-    target: document.querySelector(".fade-top"),
-    offset: ["start 90%", "end 70%"]
-  }
-);
-});
-
+  });
 
 
   const merchObserver = new IntersectionObserver((entries) => {
