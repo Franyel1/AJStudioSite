@@ -285,6 +285,7 @@ a:link{
   position: absolute;
   bottom: 20px;
   overflow: hidden;
+  cursor: default;
 }
 
 #heroContent{
