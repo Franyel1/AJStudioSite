@@ -420,13 +420,12 @@ video::-webkit-media-controls {
 
  #whyUs{
   margin-top: 12vw;
-  font-size: 180px;
+  font-size: 10vw;
   text-align: center;
   width: 100%;
   white-space: nowrap;
   margin-bottom: 40px;
   font-family: Roboto-Bold;
-  
  }
 h2{
   font-weight: 600;
@@ -434,16 +433,12 @@ h2{
   margin-bottom: 20px;
 }
 #homeContainer p{
-  font-size: 22px;
+  font-size: 23px;
   text-justify: inter-word;
   text-align: justify;
   text-align-last: center; 
 }
 
-.introSection h2:nth-child(1){
-  font-family: serif;
-  font-size: 80px;
-}
 p{
   font-size: 20px;
   font-family: Roboto-light;
@@ -502,7 +497,7 @@ p{
 
 .serviceTitle{
   font-family: Roboto-bold;
-  font-size: 1.7em;
+  font-size: 3em;
 }
 .serviceDesc{
   font-family: Roboto;
@@ -1514,7 +1509,7 @@ li{
 }
 
 #popAnimation {
-  display: flex;
+  display: none;
   justify-content: space-around;
   align-items: flex-start;
   gap: 8vw;
@@ -1611,6 +1606,60 @@ li{
   font-weight: bold;
 }
 
+#glideTrack {
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  position: relative;
+  height: 100px; /* Adjust based on your aesthetic */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  margin-top: 15vw;
+}
+
+.glideBox {
+  position: absolute;
+  width: 20vw;     /* Fits 4 in 80vw */
+  height: 20vw;
+  background-color: #2e2323; /* Replace with image/bg later */
+  border-radius: 7px;
+  will-change: transform, opacity;
+}
+.glideBox img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display: block;
+  filter: saturate(1.08) contrast(1.02);
+  transition: transform 300ms ease;
+  border-radius: inherit;
+}
+
+.glideBox:hover img { 
+  transform: scale(1.03); 
+}
+
+
+.glideBox:nth-child(1) {
+  background-color: #FF6B6B; /* Red */
+}
+.glideBox:nth-child(2) {
+  background-color: #FFD93D; /* Yellow */
+}
+.glideBox:nth-child(3) {
+  background-color: #6BCB77; /* Green */
+}
+.glideBox:nth-child(4) {
+  background-color: #4D96FF; /* Blue */
+}
+.glideBox:nth-child(5) {
+  background-color: #9D4EDD; /* Purple */
+}
+.glideBox:nth-child(6) {
+  background-color: #F38BA0; /* Pink */
+}
+
 
 @media (max-width: 1200px) {
   #BN1{
@@ -1639,15 +1688,20 @@ li{
     width: 23vw;
     height: 33vw;
   }
+
+  #glideTrack{
+    display: none;
+  }
   
   #popAnimation {
+    display: flex;
     margin-top: 70px;
     margin-bottom: 70px;
     gap: 3vw;
   }
   #servicesHeader{
-    font-size: 6vw;
-    line-height: 18.3vw;
+    font-size: 14vw;
+    line-height: 12vw;
     margin-bottom: -50px;
     margin-top: 50px;
   }
