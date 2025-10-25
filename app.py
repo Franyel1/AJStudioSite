@@ -34,7 +34,7 @@ load_dotenv()
 
 # Stripe setup
 stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
-DOMAIN = "http://127.0.0.1:5000"
+DOMAIN = os.getenv("DOMAIN")
 
 # Google Calendar setup
 SCOPES = ['https://www.googleapis.com/auth/calendar']
