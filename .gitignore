@@ -150,3 +150,5 @@ cython_debug/
 
 #cred
 credentials.json
+credentials.b64
+google_credentials.json
